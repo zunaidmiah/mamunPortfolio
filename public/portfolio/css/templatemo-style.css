@@ -133,7 +133,7 @@ video {
   position: fixed;
   right: 0;
   bottom: 0;
-  min-width: 100%; 
+  min-width: 100%;
   min-height: 100%;
 }
 #video:after {
@@ -296,7 +296,7 @@ video {
 02. HEADER CSS
 ================================================*/
 #header {
-  padding:20px 0;
+  /* padding:20px 0; */
   position: fixed;
   left:0;
   right:0;

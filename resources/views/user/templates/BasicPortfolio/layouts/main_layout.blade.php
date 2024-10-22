@@ -8,7 +8,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
-    <title>Elegance - Creative HTML5 Template</title>
+    <title>
+        @if(isset($data['website_settings']['title']))
+                {{ $data['website_settings']['title'] }}
+            @else
+                {{ "Muhammad Mamun - Annotation Expert" }}
+            @endif
+    </title>
+    <link rel="icon" type="image/x-icon" href="@if(isset($data['website_settings']['favicon'])){{ $data['website_settings']['favicon'] }}@else{{asset('favicon.ico')}}@endif">
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="{{ asset('portfolio/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('portfolio/css/font-awesome.css') }}">
@@ -33,20 +40,21 @@
             <div class="container-fluid">
                 <div class="navbar" style="justify-content: space-evenly !important;">
                     <a href="#" id="logo" title="Elegance by TemplateMo">
-                        Elegance
+                        <img src="{{ asset('logo.png') }}" alt="" width="120" height="100">
+                        <span style="margin-left: -6%;">Annotation<span style="color: #06131E;">bd</span></span>
                     </a>
                     <div class="navigation-row">
                         <nav id="navigation">
                             <button type="button" class="navbar-toggle"> <i class="fa fa-bars"></i> </button>
                             <div class="nav-box navbar-collapse">
                                 <ul class="navigation-menu nav navbar-nav navbars" id="nav">
-                                    <li data-menuanchor="slide01" class="active"><a href="#slide01">Home</a></li>
-                                    <li data-menuanchor="slide02"><a href="#slide02">About Me</a></li>
-                                    <li data-menuanchor="slide03"><a href="#slide03">Services</a></li>
-                                    <li data-menuanchor="slide04"><a href="#slide04">My Skills</a></li>
-                                    <li data-menuanchor="slide05"><a href="#slide05">My Work</a></li>
-                                    <li data-menuanchor="slide06"><a href="#slide06">Testimonials</a></li>
-                                    <li data-menuanchor="slide07"><a href="#slide07">Contact Me</a></li>
+                                    <li data-menuanchor="home" class="active"><a href="#home">Home</a></li>
+                                    <li data-menuanchor="about"><a href="#about">About Me</a></li>
+                                    <li data-menuanchor="services"><a href="#services">Services</a></li>
+                                    <li data-menuanchor="pricing"><a href="#pricing">Pricing</a></li>
+                                    <li data-menuanchor="portfolios"><a href="#portfolios">My Work</a></li>
+                                    <li data-menuanchor="testimonials"><a href="#testimonials">Testimonials</a></li>
+                                    <li data-menuanchor="contact"><a href="#contact">Contact Me</a></li>
                                 </ul>
                             </div>
                         </nav>

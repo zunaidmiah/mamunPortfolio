@@ -1,7 +1,7 @@
 @extends('user.templates.BasicPortfolio.layouts.main_layout')
 
 @section('body')
-    <div class="section animated-row" data-section="slide01">
+    <div class="section animated-row" data-section="home">
         <div class="section-inner">
             <div class="welcome-box">
                 <span class="welcome-first animate" data-animate="fadeInUp">Hello, welcome to</span>
@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="section animated-row" data-section="slide02">
+    <div class="section animated-row" data-section="about">
         <div class="section-inner">
             <div class="about-section">
                 <div class="row justify-content-center">
@@ -77,7 +77,7 @@
         </div>
     </div>
 
-    <div class="section animated-row" data-section="slide03">
+    <div class="section animated-row" data-section="services">
         <div class="section-inner">
             <div class="row justify-content-center">
                 <div class="col-md-8 wide-col-laptop">
@@ -158,7 +158,7 @@
         </div>
     </div>
 
-    <div class="section animated-row" data-section="slide04">
+    <div class="section animated-row" data-section="pricing">
         <div class="section-inner">
             <div class="row justify-content-center">
                 <div class="col-md-7 wide-col-laptop">
@@ -205,7 +205,7 @@
         </div>
     </div>
 
-    <div class="section animated-row" data-section="slide06">
+    <div class="section animated-row" data-section="testimonials">
         <div class="section-inner">
             <div class="row justify-content-center">
                 <div class="col-md-8 wide-col-laptop">
@@ -330,7 +330,7 @@
         </div>
     </div>
 
-    <div class="section animated-row" data-section="slide05">
+    <div class="section animated-row" data-section="portfolios">
         <div class="section-inner">
             <div class="row justify-content-center">
                 <div class="col-md-8 wide-col-laptop">
@@ -388,7 +388,7 @@
         </div>
     </div>
 
-    <div class="section animated-row" data-section="slide07">
+    <div class="section animated-row" data-section="contact">
         <div class="section-inner">
             <div class="row justify-content-center">
                 <div class="col-md-7 wide-col-laptop">
