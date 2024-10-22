@@ -1,165 +1,88 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>
-            @if(isset($data['website_settings']['title']))
-                {{ $data['website_settings']['title'] }}
-            @else
-                {{ "Star Labs Personal website" }}
-            @endif
-        </title>
-        <link rel="icon" type="image/x-icon" href="@if(isset($data['website_settings']['favicon'])) {{ $data['website_settings']['favicon'] }}@endif">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.0/css/font-awesome.min.css" integrity="sha512-FEQLazq9ecqLN5T6wWq26hCZf7kPqUbFC9vsHNbXMJtSZZWAcbJspT+/NEAQkBfFReZ8r9QlA9JHaAuo28MTJA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link href="https://fonts.googleapis.com/css?family=Saira:300,400,500,600,700&amp;display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Nunito:300i,400,400i,600,600i,700&amp;display=swap" rel="stylesheet">
-        <!-- /Fonts -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
+    <title>Elegance - Creative HTML5 Template</title>
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('portfolio/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('portfolio/css/font-awesome.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('portfolio/css/fullpage.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('portfolio/css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('portfolio/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('portfolio/css/templatemo-style.css') }}">
+    <link rel="stylesheet" href="{{ asset('portfolio/css/responsive.css') }}">
+</head>
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{  asset('one_page/css/plugins.css')  }}">
-        <link rel="stylesheet" href="{{  asset('one_page/css/style.css')  }}">
-        <link rel="stylesheet" href="{{  asset('one_page/css/responsive.css')  }}">
-        <!-- /Styles -->
-
-    </head>
-    <body>
-
-        <!-- Preloader -->
-        @if(isset($data['page']) && $data['page'] == 'home')
-        <div class="perker_loader-wrapper">
-            <div class="loader"></div>
+<body>
+    <div id="video">
+        <div class="preloader">
+            <div class="preloader-bounce">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-        @endif
-        <!-- /Preloader -->
 
-        <!-- Wrapper All -->
-        <div class="perker_wrap_all">
-
-            <!-- Topbar -->
-            <div class="perker_topbar">
-                <div class="mainpart">
-                    <div class="container">
-                        <div class="inner">
-                            <div class="logo">
-                                @if(isset($data['website_settings']['logo_type']) and $data['website_settings']['logo_type'] == 'logo_text')
-                                @if(isset($data['website_settings']['logo_text']))
-                                <h1 style="color: #EA3509;">{{ $data['website_settings']['logo_text'] }}</h1>
-                                @else
-                                <h1 style="color: #EA3509;">Zunaid Miah</h1>
-                                @endif
-                                @elseif(isset($data['website_settings']['logo_type']) and $data['website_settings']['logo_type'] == 'logo_image')
-                                @if(isset($data['website_settings']['logo_image']))
-                                <a href="#"><img src="{{ asset($data['website_settings']['logo_image']) }}" alt="" /></a>
-                                @endif
-                                @else
-                                <h1 style="color: #EA3509;">Star Labs</h1>
-                                @endif
-                            </div>
-                            <div class="menu">
-                                <ul>
-                                    <li><a href="#home">Home</a></li>
-                                    <li><a href="#about">About</a></li>
-                                    <li><a href="#services">Services</a></li>
-                                    <li><a href="#portfolio">Portfolio</a></li>
-                                    <li><a href="#team">Team</a></li>
-                                    <li><a href="#pricing">Pricing</a></li>
-                                    <li><a href="#news">News</a></li>
-                                    <li><a href="#contact">Contact</a></li>
+        <header id="header">
+            <div class="container-fluid">
+                <div class="navbar" style="justify-content: space-evenly !important;">
+                    <a href="#" id="logo" title="Elegance by TemplateMo">
+                        Elegance
+                    </a>
+                    <div class="navigation-row">
+                        <nav id="navigation">
+                            <button type="button" class="navbar-toggle"> <i class="fa fa-bars"></i> </button>
+                            <div class="nav-box navbar-collapse">
+                                <ul class="navigation-menu nav navbar-nav navbars" id="nav">
+                                    <li data-menuanchor="slide01" class="active"><a href="#slide01">Home</a></li>
+                                    <li data-menuanchor="slide02"><a href="#slide02">About Me</a></li>
+                                    <li data-menuanchor="slide03"><a href="#slide03">Services</a></li>
+                                    <li data-menuanchor="slide04"><a href="#slide04">My Skills</a></li>
+                                    <li data-menuanchor="slide05"><a href="#slide05">My Work</a></li>
+                                    <li data-menuanchor="slide06"><a href="#slide06">Testimonials</a></li>
+                                    <li data-menuanchor="slide07"><a href="#slide07">Contact Me</a></li>
                                 </ul>
                             </div>
-                            <div class="trigger">
-                                <span class="menu"><a href="#">Menu</a></span>
-                                <span class="close"><a href="#">Close</a></span>
-                            </div>
-                        </div>
+                        </nav>
                     </div>
                 </div>
-
-                <!-- Dropdown -->
-                <div class="dropdown">
-                    <div class="container">
-                        <div class="main">
-                            <ul>
-                                <li><a href="#home">Home</a></li>
-                                <li><a href="#about">About</a></li>
-                                <li><a href="#services">Services</a></li>
-                                <li><a href="#portfolio">Portfolio</a></li>
-                                <li><a href="#team">Team</a></li>
-                                <li><a href="#pricing">Pricing</a></li>
-                                <li><a href="#news">News</a></li>
-                                <li><a href="#contact">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Dropdown -->
-
             </div>
-            <!-- /Topbar -->
+        </header>
+
+        <video autoplay muted loop id="myVideo">
+            <source src="{{ asset('portfolio/images/video-bg.mp4') }}" type="video/mp4">
+        </video>
+        <div id="fullpage" class="fullpage-default">
 
             @yield('body')
 
-
-            <!-- Footer -->
-            <div class="perker_section">
-                <div class="perker_footer">
-                    <div class="container">
-                        <div class="footer_inner">
-                            <div class="left">
-                                <p><a href="#" target="_blank">{{ $data['personal_info']['name'] ?? "Star Labs" }}</a></p>
-                            </div>
-                            <div class="right">
-                                <ul>
-                                    @if(isset($data['social_info']))
-                                    @if(array_key_exists('facebook_url', $data['social_info']))
-                                    <li><a href="https://www.facebook.com/{{ $data['social_info']['facebook_url'] }}" target="_blank"><i class="xcon-facebook"></i></a></li>
-                                    @endif
-                                    @if(array_key_exists('twitter_url', $data['social_info']))
-                                    <li><a href="https://www.twitter.com/{{ $data['social_info']['twitter_url'] }}" target="_blank"><i class="xcon-twitter"></i></a></li>
-                                    @endif
-                                    @if(array_key_exists('linkedin_url', $data['social_info']))
-                                    <li><a href="https://www.linkedin.com/in/{{ $data['social_info']['linkedin_url'] }}" target="_blank"><i class="xcon-linkedin"></i></a></li>
-                                    @endif
-                                    @if(array_key_exists('instagram_url', $data['social_info']))
-                                    <li><a href="https://www.instagram.com/{{ $data['social_info']['instagram_url'] }}" target="_blank"><i class="xcon-instagram"></i></a></li>
-                                    @endif
-                                    @if(array_key_exists('github_url', $data['social_info']))
-                                    <li><a href="https://www.github.com/{{ $data['social_info']['github_url'] }}" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
-                                    @endif
-                                    @if(array_key_exists('youtube_url', $data['social_info']))
-                                    <li><a href="https://www.youtube.com/channel/{{ $data['social_info']['youtube_url'] }}" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
-                                    @endif
-                                    @else
-                                    <li><a href="#"><i class="xcon-facebook"></i></a></li>
-                                    <li><a href="#"><i class="xcon-twitter"></i></a></li>
-                                    <li><a href="#"><i class="xcon-linkedin"></i></a></li>
-                                    <li><a href="#"><i class="xcon-instagram"></i></a></li>
-                                    <li><a href="#"><i class="xcon-behance"></i></a></li>
-                                    @endif
-
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- /Footer -->
-
         </div>
-        <!-- /Wrapper All -->
+        <div id="social-icons">
+            <div class="text-right">
+                <ul class="social-icons">
+                    <li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="#" title="Instagram"><i class="fa fa-behance"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-        <!-- Scripts -->
-        <script src="{{  asset('one_page/js/jquery.js')  }}"></script>
-        <script src="{{  asset('one_page/js/plugins.js')  }}"></script>
-        <script src="{{  asset('one_page/js/init.js')  }}"></script>
-        <!-- /Scripts -->
-
-    </body>
-
+    <script src="{{ asset('portfolio/js/jquery.js') }}"></script>
+    <script src="{{ asset('portfolio/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('portfolio/js/fullpage.min.js') }}"></script>
+    <script src="{{ asset('portfolio/js/scrolloverflow.js') }}"></script>
+    <script src="{{ asset('portfolio/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('portfolio/js/jquery.inview.min.js') }}"></script>
+    <script src="{{ asset('portfolio/js/form.js') }}"></script>
+    <script src="{{ asset('portfolio/js/custom.js') }}"></script>
+</body>
 
 </html>
