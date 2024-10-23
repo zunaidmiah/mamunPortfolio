@@ -29,18 +29,6 @@ Route::controller(FrontEndController::class)->group( function(){
 
     Route::get('/blog-details/{url}', 'blog_details')->name('blog-details');
 
-    Route::get('/contact', 'contact')->name('contact');
-
-    Route::get('/about', 'about')->name('about');
-
-    Route::get('/portfolio', 'portfolio')->name('portfolio');
-
-    Route::get('/portfolio-archives/{url}', 'portfolio_archives')->name('portfolio-archives');
-
-    Route::get('/portfolio-details/{url}', 'portfolio_details')->name('portfolio-details');
-
-    Route::get('/resume', 'resume')->name('resume');
-
     Route::post('/comment-db', 'comment_db');
 
 

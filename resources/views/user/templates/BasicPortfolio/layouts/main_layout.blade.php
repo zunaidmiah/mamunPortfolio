@@ -2,95 +2,114 @@
 <html lang="en">
 
 <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8">
     <title>
-        @if(isset($data['website_settings']['title']))
-                {{ $data['website_settings']['title'] }}
-            @else
-                {{ "Muhammad Mamun - Annotation Expert" }}
-            @endif
+        @if (isset($data['website_settings']['title']))
+            {{ $data['website_settings']['title'] }}
+        @else
+            {{ 'Muhammad Mamun - Annotation Expert' }}
+        @endif
     </title>
-    <link rel="icon" type="image/x-icon" href="@if(isset($data['website_settings']['favicon'])){{ $data['website_settings']['favicon'] }}@else{{asset('favicon.ico')}}@endif">
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('portfolio/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('portfolio/css/font-awesome.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('portfolio/css/fullpage.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('portfolio/css/owl.carousel.css') }}">
+    <link rel="icon" type="image/x-icon"
+        href="@if (isset($data['website_settings']['favicon'])) {{ $data['website_settings']['favicon'] }}@else{{ asset('favicon.ico') }} @endif">
+
+    <!-- ====== Google Fonts ====== -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet">
+
+    <!-- ====== ALL CSS ====== -->
+    <link rel="stylesheet" href="{{ asset('portfolio/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('portfolio/css/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('portfolio/css/lightbox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('portfolio/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('portfolio/css/animate.css') }}">
-    <link rel="stylesheet" href="{{ asset('portfolio/css/templatemo-style.css') }}">
+    <link rel="stylesheet" href="{{ asset('portfolio/style.css') }}">
     <link rel="stylesheet" href="{{ asset('portfolio/css/responsive.css') }}">
+
 </head>
 
-<body>
-    <div id="video">
-        <div class="preloader">
-            <div class="preloader-bounce">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
+<body data-spy="scroll" data-target=".navbar-nav">
 
-        <header id="header">
-            <div class="container-fluid">
-                <div class="navbar" style="justify-content: space-evenly !important;">
-                    <a href="#" id="logo" title="Elegance by TemplateMo">
-                        <img src="{{ asset('logo.png') }}" alt="" width="120" height="100">
-                        <span style="margin-left: -6%;">Annotation<span style="color: #06131E;">bd</span></span>
-                    </a>
-                    <div class="navigation-row">
-                        <nav id="navigation">
-                            <button type="button" class="navbar-toggle"> <i class="fa fa-bars"></i> </button>
-                            <div class="nav-box navbar-collapse">
-                                <ul class="navigation-menu nav navbar-nav navbars" id="nav">
-                                    <li data-menuanchor="home" class="active"><a href="#home">Home</a></li>
-                                    <li data-menuanchor="about"><a href="#about">About Me</a></li>
-                                    <li data-menuanchor="services"><a href="#services">Services</a></li>
-                                    <li data-menuanchor="pricing"><a href="#pricing">Pricing</a></li>
-                                    <li data-menuanchor="portfolios"><a href="#portfolios">My Work</a></li>
-                                    <li data-menuanchor="testimonials"><a href="#testimonials">Testimonials</a></li>
-                                    <li data-menuanchor="contact"><a href="#contact">Contact Me</a></li>
-                                </ul>
-                            </div>
-                        </nav>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="spinner">
+            <div class="cube1"></div>
+            <div class="cube2"></div>
+        </div>
+    </div>
+    <!-- // Preloader -->
+
+
+    <!-- ====== Header ====== -->
+    <header id="header" class="header">
+        <!-- ====== Navbar ====== -->
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container">
+                <!-- Logo -->
+                <a class="navbar-brand logo" href="index.html">
+                    <img src="{{ asset('logo.png') }}" alt="logo">
+                    <span style="margin-left: -6%; color: white; text-transform: uppercase; font-size: 22px; font-weight: 700;">Annotation<span class="logo-text" style="color: #000;">bd</span></span>
+                </a>
+                <!-- // Logo -->
+
+                <!-- Mobile Menu -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-expanded="false"><span><i
+                            class="fa fa-bars"></i></span></button>
+                <!-- Mobile Menu -->
+
+                <div class="collapse navbar-collapse main-menu" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active"><a class="nav-link" href="#home">HOME</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">ABOUT</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#service">SERVICE</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#pricing">PRICING</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#portfolio">PORTFOLIO</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#blog">BLOG</a></li>
+                        <li class="nav-item"><a class="nav-link pr0" href="#contact">CONTACT</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- ====== // Navbar ====== -->
+    </header>
+    <!-- ====== // Header ====== -->
+
+    @yield('body')
+
+    <!-- ====== Footer Area ====== -->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="copyright-text">
+                        <p class="text-white">&copy; 2018 <a href="https://www.begindot.com/">A Template Designed by
+                                Begindot</a></p>
                     </div>
                 </div>
             </div>
-        </header>
-
-        <video autoplay muted loop id="myVideo">
-            <source src="{{ asset('portfolio/images/video-bg.mp4') }}" type="video/mp4">
-        </video>
-        <div id="fullpage" class="fullpage-default">
-
-            @yield('body')
-
         </div>
-        <div id="social-icons">
-            <div class="text-right">
-                <ul class="social-icons">
-                    <li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="#" title="Instagram"><i class="fa fa-behance"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    </footer>
+    <!-- ====== // Footer Area ====== -->
 
-    <script src="{{ asset('portfolio/js/jquery.js') }}"></script>
+
+
+
+
+
+    <!-- ====== ALL JS ====== -->
+    <script src="{{ asset('portfolio/js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('portfolio/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('portfolio/js/fullpage.min.js') }}"></script>
-    <script src="{{ asset('portfolio/js/scrolloverflow.js') }}"></script>
+    <script src="{{ asset('portfolio/js/lightbox.min.js') }}"></script>
     <script src="{{ asset('portfolio/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('portfolio/js/jquery.inview.min.js') }}"></script>
-    <script src="{{ asset('portfolio/js/form.js') }}"></script>
-    <script src="{{ asset('portfolio/js/custom.js') }}"></script>
+    <script src="{{ asset('portfolio/js/jquery.mixitup.js') }}"></script>
+    <script src="{{ asset('portfolio/js/wow.min.js') }}"></script>
+    <script src="{{ asset('portfolio/js/typed.js') }}"></script>
+    <script src="{{ asset('portfolio/js/skill.bar.js') }}"></script>
+    <script src="{{ asset('portfolio/js/fact.counter.js') }}"></script>
+    <script src="{{ asset('portfolio/js/main.js') }}"></script>
+
 </body>
 
 </html>

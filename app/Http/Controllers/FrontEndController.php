@@ -9,43 +9,23 @@ use App\Models\comments;
 class FrontEndController extends Controller
 {
     public function index(){
-        $template_dir = get_active_template();
         $data = $this->get_data();
         $data['page'] = 'home';
-        if($template_dir == 'GraphicsPortfolio'){
-            $data['page_image'] = \Cache::remember('home_page_image', 1000, function () {
-                return DB::table('options')->where('option_group', 'website_settings')->where('option_key', 'home_page_image')->pluck('option_value')->first();
-            });
-        }
-        if($template_dir == 'GraphicsPortfolio') return view('user.templates.GraphicsPortfolio.index')->with('data', $data);
-        elseif($template_dir == 'BasicPortfolio') return view('user.templates.BasicPortfolio.index')->with('data', $data);
-        else return view('user.templates.BasicPortfolio.index')->with('data', $data);
+        return view('user.templates.BasicPortfolio.index')->with('data', $data);
     }
 
     // blog page
     public function blog(){
         $template_dir = get_active_template();
-        if(!isset($template_dir)) return redirect()->to('/');
         $data['blogs'] = $this->get_blogs();
         $data['website_settings'] = $this->get_website_data();
         $data['social_info'] = $this->get_social_data();
-        if($template_dir == 'BasicPortfolio'){
-            $data['personal_info'] = $this->get_personal_data();
-        }
-        if($template_dir == 'GraphicsPortfolio'){
-            $data['page'] = 'blog';
-            $data['page_image'] = \Cache::remember('blog_page_image', 1000, function () {
-                return DB::table('options')->where('option_group', 'website_settings')->where('option_key', 'blog_page_image')->pluck('option_value')->first();
-            });
-        }
-        if($template_dir == 'GraphicsPortfolio') return view('user.templates.GraphicsPortfolio.blog')->with('data', $data);
-        if($template_dir == 'BasicPortfolio') return view('user.templates.BasicPortfolio.blog')->with('data', $data);
+        $data['personal_info'] = $this->get_personal_data();
+        return view('user.templates.BasicPortfolio.blog')->with('data', $data);
     }
 
     // blog_details page
     public function blog_details($url){
-        $template_dir = get_active_template();
-        // $data = $this->get_data();
         $data['website_settings'] = $this->get_website_data();
         $data['social_info'] = $this->get_social_data();
         $data['blog'] = $this->get_blog_by_url($url);
@@ -56,161 +36,24 @@ class FrontEndController extends Controller
             $data['related_blogs'] = $this->get_related_blog($blog_id);
             $data['blog_comments'] = $this->get_blog_comments($blog_id);
         }
-        if($template_dir == 'BasicPortfolio'){
-            $data['personal_info'] = $this->get_personal_data();
-        }
-        if($template_dir == 'GraphicsPortfolio'){
-            $data['page'] = 'blog';
-            $data['page_image'] = \Cache::remember('blog_page_image', 1000, function () {
-                return DB::table('options')->where('option_group', 'website_settings')->where('option_key', 'blog_page_image')->pluck('option_value')->first();
-            });
-        }
-        if($template_dir == 'GraphicsPortfolio') return view('user.templates.GraphicsPortfolio.blog-details')->with('data', $data);
-        elseif($template_dir == 'BasicPortfolio') return view('user.templates.BasicPortfolio.blog-details')->with('data', $data);
-    }
-
-    // contact page
-    public function contact(){
-        $template_dir = get_active_template();
-        if(!isset($template_dir) or $template_dir == 'BasicPortfolio') return redirect()->to('/');
-        $data['website_settings'] = $this->get_website_data();
-        $data['social_info'] = $this->get_social_data();
         $data['personal_info'] = $this->get_personal_data();
-        $data['page'] = 'contact';
-        $data['page_image'] = \Cache::remember('contact_page_image', 1000, function () {
-            return DB::table('options')->where('option_group', 'website_settings')->where('option_key', 'contact_page_image')->pluck('option_value')->first();
-        });
-        if($template_dir == 'GraphicsPortfolio') return view('user.templates.GraphicsPortfolio.contact')->with('data', $data);
-    }
-
-    // about page
-    public function about(){
-        $template_dir = get_active_template();
-        if(!isset($template_dir) or $template_dir == 'BasicPortfolio') return redirect()->to('/');
-        $data['website_settings'] = $this->get_website_data();
-        $data['social_info'] = $this->get_social_data();
-        $data['personal_info'] = $this->get_personal_data();
-        $data['pricing'] = $this->get_pricing_data();
-        $data['service'] = $this->get_service_data();
-        $data['recommendation'] = $this->get_recommendation_data();
-        $data['page'] = 'about';
-        $data['page_image'] = \Cache::remember('about_page_image', 1000, function () {
-            return DB::table('options')->where('option_group', 'website_settings')->where('option_key', 'about_page_image')->pluck('option_value')->first();
-        });
-        if($template_dir == 'GraphicsPortfolio') return view('user.templates.GraphicsPortfolio.about')->with('data', $data);
-    }
-
-    // portfolio page
-    public function portfolio(){
-        $template_dir = get_active_template();
-        if(!isset($template_dir) or $template_dir == 'BasicPortfolio') return redirect()->to('/');
-        $data['website_settings'] = $this->get_website_data();
-        $data['social_info'] = $this->get_social_data();
-        $data['portfolios'] = $this->get_portfolios_data();
-        $data['portfolio_categories'] = $this->get_portfolio_categories();
-        $data['page'] = 'portfolio';
-        $data['page_image'] = \Cache::remember('portfolio_page_image', 1000, function () {
-            return DB::table('options')->where('option_group', 'website_settings')->where('option_key', 'portfolio_page_image')->pluck('option_value')->first();
-        });
-        if($template_dir == 'GraphicsPortfolio') return view('user.templates.GraphicsPortfolio.portfolio')->with('data', $data);
-    }
-
-    // portfolio_archives page
-    public function portfolio_archives(){
-        $template_dir = get_active_template();
-        $data = $this->get_data();
-        $data['page'] = 'portfolio';
-        $data['page_image'] = \Cache::remember('portfolio_page_image', 1000, function () {
-            return DB::table('options')->where('option_group', 'website_settings')->where('option_key', 'portfolio_page_image')->pluck('option_value')->first();
-        });
-        if($template_dir == 'GraphicsPortfolio') return view('user.templates.GraphicsPortfolio.portfolio-archives')->with('data', $data);
-    }
-
-    // portfolio_details page
-    public function portfolio_details($url){
-        $template_dir = get_active_template();
-        $data['website_settings'] = $this->get_website_data();
-        $data['social_info'] = $this->get_social_data();
-        $data['portfolio'] = $this->get_portfolio_by_url($url);
-        if(isset($data['portfolio']['id'])){
-            $portfolio_id = $data['portfolio']['id'];
-            $data['portfolio_images'] = $this->get_portfolio_images($portfolio_id);
-            $data['related_portfolios'] = $this->get_related_portfolio($portfolio_id);
-            $data['portfolio_category'] = category_name($data['portfolio']['category']);
-        }
-        $data['page'] = 'portfolio';
-        $data['page_image'] = \Cache::remember('portfolio_page_image', 1000, function () {
-            return DB::table('options')->where('option_group', 'website_settings')->where('option_key', 'portfolio_page_image')->pluck('option_value')->first();
-        });
-        if($template_dir == 'GraphicsPortfolio') return view('user.templates.GraphicsPortfolio.portfolio-details')->with('data', $data);
-    }
-
-    // resume page
-    public function resume(){
-        $template_dir = get_active_template();
-        if(!isset($template_dir) or $template_dir == 'BasicPortfolio') return redirect()->to('/');
-        $data['institution_info'] = $this->get_institution_info();
-        $data['working_experience'] = $this->get_working_experience_data();
-        $data['skills'] = $this->get_skills_data();
-        $data['website_settings'] = $this->get_website_data();
-        $data['social_info'] = $this->get_social_data();
-        $data['personal_info'] = $this->get_personal_data();
-        $data['page'] = 'resume';
-        $data['page_image'] = \Cache::remember('resume_page_image', 1000, function () {
-            return DB::table('options')->where('option_group', 'website_settings')->where('option_key', 'resume_page_image')->pluck('option_value')->first();
-        });
-        if($template_dir == 'GraphicsPortfolio') return view('user.templates.GraphicsPortfolio.resume')->with('data', $data);
+        return view('user.templates.BasicPortfolio.blog-details')->with('data', $data);
     }
 
     // get data set for homepage
     public function get_data(){
         $data = [];
-        $template_dir = get_active_template();
-
-        // service data
-        if(!isset($template_dir) or $template_dir == 'BasicPortfolio' or $template_dir == 'GraphicsPortfolio')
-            $data['service'] = $this->get_service_data();
-
-        // all portfolios
-        if(!isset($template_dir) or $template_dir == 'BasicPortfolio')
-            $data['portfolios'] = $this->get_portfolios_data();
-
-        // working_experience data
-        if(!isset($template_dir) or $template_dir == 'BasicPortfolio')
-            $data['working_experience'] = $this->get_working_experience_data();
-
-        // career achivements data
-        if(!isset($template_dir) or $template_dir == 'BasicPortfolio')
-            $data['career_achievements'] = $this->get_career_achievements_data();
-
-        // skills data
-        if(!isset($template_dir) or $template_dir == 'BasicPortfolio')
-            $data['skills'] = $this->get_skills_data();
-
-        // team data
-        if(!isset($template_dir) or $template_dir == 'BasicPortfolio')
-            $data['teams'] = $this->get_team_data();
-
-        // pricing data
-        if(!isset($template_dir) or $template_dir == 'BasicPortfolio')
-            $data['pricing'] = $this->get_pricing_data();
-
-        // personal information
-        if(!isset($template_dir) or $template_dir == 'BasicPortfolio' or $template_dir == 'GraphicsPortfolio')
-            $data['personal_info'] = $this->get_personal_data();
-
-        // all blogs
-        if(!isset($template_dir) or $template_dir == 'BasicPortfolio')
-            $data['blogs'] = $this->get_blogs();
-
-        // social information
-        if(!isset($template_dir) or $template_dir == 'BasicPortfolio' or $template_dir == 'GraphicsPortfolio')
-            $data['social_info'] = $this->get_social_data();
-
-        // Website setting
-        if(!isset($template_dir) or $template_dir == 'BasicPortfolio' or $template_dir == 'GraphicsPortfolio')
-            $data['website_settings'] = $this->get_website_data();
-
+        $data['service'] = $this->get_service_data();
+        $data['portfolios'] = $this->get_portfolios_data();
+        $data['working_experience'] = $this->get_working_experience_data();
+        $data['career_achievements'] = $this->get_career_achievements_data();
+        $data['skills'] = $this->get_skills_data();
+        $data['teams'] = $this->get_team_data();
+        $data['pricing'] = $this->get_pricing_data();
+        $data['personal_info'] = $this->get_personal_data();
+        $data['blogs'] = $this->get_blogs();
+        $data['social_info'] = $this->get_social_data();
+        $data['website_settings'] = $this->get_website_data();
         return $data;
     }
 
@@ -356,7 +199,7 @@ class FrontEndController extends Controller
     // get portfolio categories
     public function get_portfolio_categories(){
         $categories = DB::table('categories')->where('type', 'portfolio')->pluck('name', 'id')->where('is_hidden', 0)->where('is_deleted', 0)->toArray();
-    if($categories){
+        if($categories){
             return $categories;
         }
     }
