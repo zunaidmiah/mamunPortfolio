@@ -40,7 +40,7 @@
             background: #fff;
         }
     </style>
-    <?php 
+    <?php
         $status = true;
         if(isset($_GET['edit'])){
             $status = false;
@@ -78,7 +78,7 @@
                                 <label class="font-weight-bold">Favicon</label>
                                 @if($status)
                                 <br>
-                                    @if(isset($data['favicon']))    
+                                    @if(isset($data['favicon']))
                                     <img src="{{ asset($data['favicon']) }}" alt="favicon" width="50" height="50">
                                     @else
                                     <p>No image</p>
@@ -87,7 +87,7 @@
                                 <input type="file" class="form-control" name="favicon" value="@if(isset($data['favicon'])) {{ $data['favicon'] }} @endif">
                                 @endif
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label class="font-weight-bold">Logo Type</label>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="logo_type" id="logo_text" @if(isset($data['logo_type']) and $data['logo_type'] == 'logo_text') {{ "checked" }} @endif value="logo_text" onclick="logo_type_text()">
@@ -101,8 +101,8 @@
                                       Image
                                     </label>
                                   </div>
-                            </div>
-                            <div class="form-group logo-text" @if(!isset($data['logo_type']) or (isset($data['logo_type']) and $data['logo_type'] == 'logo_image')) {{ 'style=display:none;' }} @endif>
+                            </div> --}}
+                            {{-- <div class="form-group logo-text" @if(!isset($data['logo_type']) or (isset($data['logo_type']) and $data['logo_type'] == 'logo_image')) {{ 'style=display:none;' }} @endif>
                                 <label class="font-weight-bold">Logo text</label>
                                 <input type="text" class="form-control" name="logo_text"  value="@if(isset($data['logo_text'])) {{ $data['logo_text'] }} @endif" @if($status) disabled @endif>
                             </div>
@@ -110,7 +110,7 @@
                                 <label class="font-weight-bold">Logo</label>
                                 @if($status)
                                 <br>
-                                    @if(isset($data['logo_text'])) 
+                                    @if(isset($data['logo_text']))
                                     <img src="{{ asset($data['logo_text']) }}" alt="logo" width="400" height="500">
                                     @else
                                     <p>No image</p>
@@ -118,7 +118,7 @@
                                 @else
                                 <input type="file" class="form-control" name="logo" value="@if(isset($data['logo_text'])) {{ $data['logo_text'] }} @endif">
                                 @endif
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -130,10 +130,10 @@
                         </div>
                         <div class="col-12 col-sm-6 col-md-8 form">
                             <div class="form-group">
-                                <label class="font-weight-bold">Hero section image</label>
+                                <label class="font-weight-bold">Hero section slider image</label>
                                 @if($status)
                                 <br>
-                                    @if(isset($data['hero_image'])) 
+                                    @if(isset($data['hero_image']))
                                     <img src="{{ asset($data['hero_image']) }}" alt="hero_image" width="400" height="500" >
                                     @else
                                     <p>No image</p>
@@ -146,7 +146,7 @@
                                 <label class="font-weight-bold">About section image</label>
                                 @if($status)
                                 <br>
-                                    @if(isset($data['about_image'])) 
+                                    @if(isset($data['about_image']))
                                     <img src="{{ asset($data['about_image']) }}" alt="about_image" width="400" height="500">
                                     @else
                                     <p>No image</p>
@@ -155,10 +155,23 @@
                                 <input type="file" class="form-control" name="about_image" value="@if(isset($data['about_image'])) {{$data['about_image']}} @endif">
                                 @endif
                             </div>
+                            <div class="form-group">
+                                <label class="font-weight-bold">FAQ section image</label>
+                                @if($status)
+                                <br>
+                                    @if(isset($data['faq_image']))
+                                    <img src="{{ asset($data['faq_image']) }}" alt="faq_image" width="400" height="500">
+                                    @else
+                                    <p>No image</p>
+                                    @endif
+                                @else
+                                <input type="file" class="form-control" name="faq_image" value="@if(isset($data['faq_image'])) {{$data['faq_image']}} @endif">
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="contact-info">
+                {{-- <div class="contact-info">
                     <div class="row">
                         <div class="col-6 col-md-4">
                             <h5 class="font-weight-bold">Webpage Images</h5>
@@ -169,7 +182,7 @@
                                 <label class="font-weight-bold">Homepage image</label>
                                 @if($status)
                                 <br>
-                                    @if(isset($data['home_page_image'])) 
+                                    @if(isset($data['home_page_image']))
                                     <img src="{{ asset($data['home_page_image']) }}" alt="home_page_image" width="400" height="500" >
                                     @else
                                     <p>No image</p>
@@ -182,7 +195,7 @@
                                 <label class="font-weight-bold">Blog page image</label>
                                 @if($status)
                                 <br>
-                                    @if(isset($data['blog_page_image'])) 
+                                    @if(isset($data['blog_page_image']))
                                     <img src="{{ asset($data['blog_page_image']) }}" alt="blog_page_image" width="400" height="500" >
                                     @else
                                     <p>No image</p>
@@ -195,7 +208,7 @@
                                 <label class="font-weight-bold">Portfolio page image</label>
                                 @if($status)
                                 <br>
-                                    @if(isset($data['portfolio_page_image'])) 
+                                    @if(isset($data['portfolio_page_image']))
                                     <img src="{{ asset($data['portfolio_page_image']) }}" alt="portfolio_page_image" width="400" height="500" >
                                     @else
                                     <p>No image</p>
@@ -208,7 +221,7 @@
                                 <label class="font-weight-bold">Resume page image</label>
                                 @if($status)
                                 <br>
-                                    @if(isset($data['resume_page_image'])) 
+                                    @if(isset($data['resume_page_image']))
                                     <img src="{{ asset($data['resume_page_image']) }}" alt="resume_page_image" width="400" height="500" >
                                     @else
                                     <p>No image</p>
@@ -221,7 +234,7 @@
                                 <label class="font-weight-bold">About page image</label>
                                 @if($status)
                                 <br>
-                                    @if(isset($data['about_page_image'])) 
+                                    @if(isset($data['about_page_image']))
                                     <img src="{{ asset($data['about_page_image']) }}" alt="about_page_image" width="400" height="500" >
                                     @else
                                     <p>No image</p>
@@ -234,7 +247,7 @@
                                 <label class="font-weight-bold">Contact page image</label>
                                 @if($status)
                                 <br>
-                                    @if(isset($data['contact_page_image'])) 
+                                    @if(isset($data['contact_page_image']))
                                     <img src="{{ asset($data['contact_page_image']) }}" alt="contact_page_image" width="400" height="500" >
                                     @else
                                     <p>No image</p>
@@ -245,7 +258,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="tariff-profile-form-button">
                     @if(!$status)
                     <button class="btn btn-success">

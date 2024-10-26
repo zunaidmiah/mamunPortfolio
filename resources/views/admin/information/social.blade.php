@@ -8,7 +8,7 @@
                 @if(session('message') != null)
                     <span class="ml-2 mb-2 badge badge-success">{{ session('message') }}</span>
                 @endif
-                <?php 
+                <?php
                     $data = DB::table('user_metas')->where('user_group', 'social-info')->where('user_id', session('user_id'))->pluck('user_value','user_key')->toArray();
                 ?>
                 <div class="row">
@@ -30,12 +30,12 @@
                                                     <small class="text-muted d-block mb-2">Select the social networks you want to see on your site, blog and store</small>
                                                 </div>
 
-                                                <div class="form-group">
+                                                {{-- <div class="form-group">
                                                     <div class="custom-control  d-flex align-items-center">
                                                         <label class="custom-control-label mr-2 d-flex" for="github_enabled"><i class="mdi mdi-github mdi-20px lh-1_0 mr-2"></i> github.com/</label>
                                                         <input type="text" class=" form-control" name="github_url" value="@if(isset($data['github_url'])){{  $data['github_url']  }} @endif"/>
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 <div class="form-group">
                                                     <div class="custom-control  d-flex align-items-center">
@@ -50,16 +50,16 @@
                                                         <input type="text" option-group="" class=" form-control" name="facebook_url" value="@if(isset($data['facebook_url'])){{  $data['facebook_url']  }} @endif">
                                                     </div>
                                                 </div>
-                            
+
                                                 <div class="form-group">
                                                     <div class="custom-control  d-flex align-items-center">
                                                         <label class="custom-control-label mr-2 d-flex" for="twitter_enabled"><i class="mdi mdi-twitter mdi-20px lh-1_0 mr-2"></i> twitter.com/</label>
                                                         <input type="text" option-group="" class=" form-control" name="twitter_url" value="@if(isset($data['twitter_url'])){{  $data['twitter_url']  }} @endif">
                                                     </div>
                                                 </div>
-                            
+
                                                 <a href="javascript:;" class="btn btn-outline-primary btn-sm mb-3" data-toggle="collapse" data-target="#more-socials-settings" aria-expanded="true">Show more</a>
-                            
+
                                                 <div class="collapse" id="more-socials-settings">
                                                     <div class="form-group">
                                                         <div class="custom-control  d-flex align-items-center">
@@ -67,28 +67,28 @@
                                                             <input type="text"  class=" form-control" name="youtube_url" value="@if(isset($data['youtube_url'])){{  $data['youtube_url']  }} @endif"/>
                                                         </div>
                                                     </div>
-                            
-                                                    <div class="form-group">
+
+                                                    {{-- <div class="form-group">
                                                         <div class="custom-control  d-flex align-items-center">
                                                             <label class="custom-control-label mr-2 d-flex" for="pinterest_enabled"><i class="mdi mdi-pinterest mdi-20px lh-1_0 mr-2"></i> pinterest.com/</label>
                                                             <input type="text" class=" form-control" name="pinterest_url" value="@if(isset($data['pinterest_url'])){{  $data['pinterest_url']  }} @endif"/><span></span>
                                                         </div>
-                                                    </div>                        
-                            
+                                                    </div> --}}
+
                                                     <div class="form-group">
                                                         <div class="custom-control  d-flex align-items-center">
                                                             <label class="custom-control-label mr-2 d-flex" for="instagram_enabled"><i class="mdi mdi-instagram mdi-20px lh-1_0 mr-2"></i> instagram.com/</label>
                                                             <input type="text" class=" form-control" name="instagram_url" value="@if(isset($data['instagram_url'])){{  $data['instagram_url']  }} @endif"/>
                                                         </div>
                                                     </div>
-                            
-                                                    <div class="form-group">
+
+                                                    {{-- <div class="form-group">
                                                         <div class="custom-control  d-flex align-items-center">
                                                             <label class="custom-control-label mr-2 d-flex" for="soundcloud_enabled"><i class="mdi mdi-soundcloud mdi-20px lh-1_0 mr-2"></i> soundcloud.com/</label>
                                                             <input type="text" class=" form-control" name="soundcloud_url" value="@if(isset($data['soundcloud_url'])){{  $data['soundcloud_url']  }} @endif"/>
                                                         </div>
-                                                    </div>
-                            
+                                                    </div> --}}
+
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="custom-control d-flex align-items-center">

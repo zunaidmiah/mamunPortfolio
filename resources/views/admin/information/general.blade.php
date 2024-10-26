@@ -85,35 +85,61 @@
                                     <textarea class="ckeditor" name="about_me" cols="30" rows="10" @if($status) disabled @endif>@if(isset($data['about_me'])) {{ $data['about_me'] }} @endif</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Birth date</label>
-                                    <input @if($status) type="text" @else type="date" @endif class="form-control" name="birth_date"  value="@if(isset($data['birth_date'])) {{ $data['birth_date'] }} @endif" @if($status) disabled @endif>
+                                    <label>Ticker Text</label>
+                                    <input type="text" class="form-control" name="ticker_text"  value="@if(isset($data['ticker_text'])) {{ $data['ticker_text'] }} @endif" @if($status) disabled @endif>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label>Location</label>
                                     <input type="text" class="form-control" name="location" value="@if(isset($data['location'])) {{ $data['location'] }} @endif" @if($status) disabled @endif>
-                                </div>
-                                <div class="form-group">
+                                </div> --}}
+                                {{-- <div class="form-group">
                                     <label>Interest</label>
                                     <input type="text" class="form-control" name="interest" value="@if(isset($data['interest'])) {{ $data['interest'] }} @endif" @if($status) disabled @endif>
-                                </div>
-                                <div class="form-group">
+                                </div> --}}
+                                {{-- <div class="form-group">
                                     <label>Country</label>
                                     <select class="form-control" name="country" @if($status) disabled @endif>
                                         <option value="">Select one</option>
                                             <option @if(isset($data['country']) and $data['country'] == 'Bangladesh') selected @endif value="Bangladesh">Bangladesh</option>
                                     </select>
-                                </div>
-                                <div class="form-group">
+                                </div> --}}
+                                {{-- <div class="form-group">
                                     <label>Skiills Info</label>
                                     <textarea class="ckeditor" name="skills_details" cols="30" rows="10" @if($status) disabled @endif>@if(isset($data['skills_details'])) {{ $data['skills_details'] }} @endif</textarea>
-                                </div>
-                                <div class="form-group">
+                                </div> --}}
+                                {{-- <div class="form-group">
                                     <label>CV</label>
                                     @if($status)
                                     <input type="text" class="form-control" value="@if(isset($data['cv'])) {{ $data['cv'] }} @endif" disabled>
                                     @else
                                     <input type="file" class="form-control" name="cv" accept=".doc,.docx,.pdf" value="@if(isset($data['cv'])) {{ $data['cv'] }} @endif">
                                     @endif
+                                </div> --}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="genaral-info">
+                        <div class="row">
+                            <div class="col-6 col-md-4">
+                                <h5 class="font-weight-bold">Works Information</h5>
+                                <small class="text-muted">You can add/update your works information here.</small>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-8 form">
+                                <div class="form-group">
+                                    <label>Years of Experience</label>
+                                    <input type="text" class="form-control" name="experience" value="@if(isset($data['experience'])) {{ $data['experience'] }} @endif" @if($status) disabled @endif>
+                                </div>
+                                <div class="form-group">
+                                    <label>Happy Clients</label>
+                                    <input type="text" class="form-control" name="clients" value="@if(isset($data['clients'])) {{ $data['clients'] }} @endif" @if($status) disabled @endif>
+                                </div>
+                                <div class="form-group">
+                                    <label>Awards win</label>
+                                    <input type="text" class="form-control" name="awards" value="@if(isset($data['awards'])) {{ $data['awards'] }} @endif" @if($status) disabled @endif>
+                                </div>
+                                <div class="form-group">
+                                    <label>Cup of coffee</label>
+                                    <input type="text" class="form-control" name="coffee" value="@if(isset($data['coffee'])) {{ $data['coffee'] }} @endif" @if($status) disabled @endif>
                                 </div>
                             </div>
                         </div>
@@ -133,10 +159,10 @@
                                     <label>Phone</label>
                                     <input type="text" class="form-control" name="phone" value="@if(isset($data['phone'])) {{ $data['phone'] }} @endif" @if($status) disabled @endif>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label>Phone</label>
                                     <input type="text" class="form-control" name="phone1" value="@if(isset($data['phone1'])) {{ $data['phone1'] }} @endif" @if($status) disabled @endif>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

@@ -7,9 +7,9 @@
             <div class="hero-content h-100">
                 <div class="d-table">
                     <div class="d-table-cell">
-                        <h2 class="text-uppercase">Muhammad Mamun</h2>
+                        <h2 class="text-uppercase">@if(isset($data['personal_info']['name'])) {{ $data['personal_info']['name'] }} @else Muhammad Mamun @endif</h2>
                         <h3 class="text-uppercase"><span class="typed"></span></h3>
-                        <p>Make designed by as Begindot.</p>
+                        <input type="hidden" id="ticker_text" value="@if(isset($data['personal_info']['ticker_text'])) {{ $data['personal_info']['ticker_text'] }} @else {{ "Web Designer,Graphic Designer" }} @endif">
                     </div>
                 </div>
             </div>
@@ -19,16 +19,20 @@
         <div class="hero-area-slids owl-carousel">
             <div class="single-slider">
                 <!-- Single Background -->
+                @if(isset($data['website_settings']['hero_image']))
+                <div class="slider-bg" style="background-image: url({{ asset($data['website_settings']['hero_image']) }})">
+                @else
                 <div class="slider-bg" style="background-image: url({{ asset('portfolio/images/hero-area/img-1.jpg') }})">
+                @endif
                 </div>
                 <!-- // Single Background -->
             </div>
-            <div class="single-slider">
+            {{-- <div class="single-slider">
                 <!-- Single Background -->
                 <div class="slider-bg" style="background-image: url({{ asset('portfolio/images/hero-area/img-2.jpg') }})">
                 </div>
                 <!-- // Single Background -->
-            </div>
+            </div> --}}
         </div>
         <!-- // Hero Area Slider -->
     </div>
@@ -43,41 +47,82 @@
                 <div class="col-lg-6 ">
                     <div class="section-title text-center">
                         <h2>About Me</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus placeat unde non modi,
-                            facilis, quae?</p>
+                        {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus placeat unde non modi,
+                            facilis, quae?</p> --}}
                     </div>
                 </div>
             </div>
             <!-- //Section Title -->
             <div class="row">
                 <div class="col-lg-6">
+                    @if(isset($data['website_settings']['about_image']))
+                    <div class="about-bg" style="background-image:url({{ asset($data['website_settings']['about_image']) }})">
+                    @else
                     <div class="about-bg" style="background-image:url({{ asset('portfolio/images/about-bg.jpg') }})">
+                    @endif
                         <!-- Social Link -->
                         <div class="social-aria">
+                            @if(isset($data['social_info']))
+                            <a href="https://www.facebook.com/{{ $data['social_info']['facebook_url'] }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            @if(array_key_exists('facebook_url', $data['social_info']))
+                            @endif
+                            @if(array_key_exists('twitter_url', $data['social_info']))
+                            <a href="https://www.twitter.com/{{ $data['social_info']['twitter_url'] }}" target="_blank"><i class="fab fa-twitter"></i></a>
+                            @endif
+                            @if(array_key_exists('linkedin_url', $data['social_info']))
+                            <a href="https://www.linkedin.com/in/{{ $data['social_info']['linkedin_url'] }}" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            @endif
+                            @if(array_key_exists('instagram_url', $data['social_info']))
+                            <a href="https://www.instagram.com/{{ $data['social_info']['instagram_url'] }}" target="_blank"><i class="fab fa-instagram"></i></a>
+                            @endif
+                            {{-- @if(array_key_exists('github_url', $data['social_info']))
+                            <a href="https://www.github.com/{{ $data['social_info']['github_url'] }}" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+                            @endif --}}
+                            @if(array_key_exists('youtube_url', $data['social_info']))
+                            <a href="https://www.youtube.com/channel/{{ $data['social_info']['youtube_url'] }}" target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                            @endif
+                            @else
                             <a target="_blank" href="#"><i class="fab fa-facebook-f"></i></a>
                             <a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
                             <a target="_blank" href="#"><i class="fab fa-instagram"></i></a>
                             <a target="_blank" href="#"><i class="fab fa-pinterest"></i></a>
                             <a target="_blank" href="#"><i class="fab fa-youtube"></i></a>
+                            <a target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
+                            @endif
                         </div>
                         <!-- // Social Link -->
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="about-content">
-                        <h2>Hello, I am <span>AL Mamun</span></h2>
-                        <h4>Graphic Designer and Web Designer</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis numquam ipsam ut deleniti
-                            perferendis aliquid ullam, voluptatibus nam sunt eum laudantium cupiditate iste, obcaecati
-                            deserunt dolores aliquam quia cum minus animi ipsa est facere culpa fugiat, maxime quam!
-                            Itaque aperiam sequi accusantium impedit recusandae nobis quod sunt deserunt provident
-                            omnis.</p>
+                        <h2>Hello, I am <span>@if(isset($data['personal_info']['name'])) {{ $data['personal_info']['name'] }} @else Muhammad Mamun @endif</span></h2>
+                        <h4>@if(isset($data['personal_info']['profession_name'])) {{ $data['personal_info']['profession_name'] }} @else Data Annotation Expert @endif</h4>
+                        @if(isset($data['personal_info']['about_me']))
+                        {!! $data['personal_info']['about_me'] !!}
+                        @else
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis numquam ipsam ut deleniti perferendis aliquid ullam, voluptatibus nam sunt eum laudantium cupiditate iste, obcaecati deserunt dolores aliquam quia cum minus animi ipsa est facere culpa fugiat, maxime quam! Itaque aperiam sequi accusantium impedit recusandae nobis quod sunt deserunt provident omnis.
+                        </p>
+                        @endif
 
                         <h5>My Skills</h5>
 
                         <!-- Skill Area -->
                         <div id="skills" class="skill-area">
-
+                            @if(isset($data['skills']))
+                            <?php
+                            $skills = $data['skills'];
+                            foreach($skills as $key => $skill):
+                            ?>
+                            <div class="single-skill">
+                                <div class="skillbar" data-percent="{{ $skill->percentage }}%">
+                                    <div class="skillbar-title"><span>{{ $skill->name }}</span></div>
+                                    <div class="skillbar-bar"></div>
+                                    <div class="skill-bar-percent">{{ $skill->percentage }}%</div>
+                                </div>
+                            </div>
+                            @endforeach
+                            @else
                             <!-- Single skill -->
                             <div class="single-skill">
                                 <div class="skillbar" data-percent="100%">
@@ -107,7 +152,7 @@
                                 </div>
                             </div>
                             <!-- //Single skill -->
-
+                            @endif
                         </div>
                         <!-- //Skill Area -->
                     </div>
@@ -129,7 +174,7 @@
                 <!-- Single Fact Counter -->
                 <div class="col-lg-3 co col-md-6 l-md-6 text-center">
                     <div class="single-fun-fact">
-                        <h2><span class="counter-value" data-count="08">0</span>+</h2>
+                        <h2><span class="counter-value" data-count="@if(isset($data['personal_info']['experience'])){{ $data['personal_info']['experience'] }}@else{{ "05" }}@endif">0</span>+</h2>
                         <p>Years Experience</p>
                     </div>
                 </div>
@@ -137,7 +182,7 @@
                 <!-- Single Fact Counter -->
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="single-fun-fact">
-                        <h2><span class="counter-value" data-count="600">0</span>+</h2>
+                        <h2><span class="counter-value" data-count="@if(isset($data['personal_info']['clients'])){{ $data['personal_info']['clients'] }}@else{{ "100" }}@endif">0</span>+</h2>
                         <p>Happy Clients</p>
                     </div>
                 </div>
@@ -145,7 +190,7 @@
                 <!-- Single Fact Counter -->
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="single-fun-fact">
-                        <h2><span class="counter-value" data-count="09">0</span>+</h2>
+                        <h2><span class="counter-value" data-count="@if(isset($data['personal_info']['awards'])){{ $data['personal_info']['awards'] }}@else{{ "09" }}@endif">0</span>+</h2>
                         <p>Awards Win</p>
                     </div>
                 </div>
@@ -153,7 +198,7 @@
                 <!-- Single Fact Counter -->
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="single-fun-fact">
-                        <h2><span class="counter-value" data-count="451">0</span>+</h2>
+                        <h2><span class="counter-value" data-count="@if(isset($data['personal_info']['coffee'])){{ $data['personal_info']['coffee'] }}@else{{ "500" }}@endif">0</span>+</h2>
                         <p>Cups of Coffee</p>
                     </div>
                 </div>
@@ -170,14 +215,37 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 ">
                     <div class="section-title text-center">
-                        <h2>Service</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <h2>Services</h2>
+                        {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> --}}
                     </div>
                 </div>
             </div>
             <!-- //Section Title -->
 
             <div class="row">
+                @if(isset($data['service']))
+                    <?php
+                    $service = $data['service'];
+                    foreach ($service as $key => $item):
+                    $icon = 'fa-code';
+                    if($key == 0) $icon ='fa-code';
+                    elseif($key == 1) $icon ='fa-chart-area';
+                    elseif($key == 2) $icon ='fa-chart-line';
+                    elseif($key == 3) $icon ='fa-code';
+                    elseif($key == 4) $icon ='fa-chart-area';
+                    elseif($key == 5) $icon ='fa-chart-line';
+                    ?>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-service">
+                            <div class="service-icon">
+                                <i class="fa {{ $icon }}"></i>
+                            </div>
+                            <h2>{{ $item->name }}</h2>
+                            <p class="text">{{ strip_tags(substr($item->description, 0, 100)) }}...</p>
+                        </div>
+                    </div>
+                    @endforeach
+                @else
                 <!-- Single Service -->
                 <div class="col-lg-4 col-md-6">
                     <div class="single-service">
@@ -214,6 +282,7 @@
                     </div>
                 </div>
                 <!-- //Single Service -->
+                @endif
             </div>
 
         </div>
@@ -227,13 +296,30 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 ">
                     <div class="section-title text-center">
-                        <h2>Pricing Area</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <h2>Pricing</h2>
+                        {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> --}}
                     </div>
                 </div>
             </div>
             <!-- //Section Title -->
             <div class="row">
+                @if(isset($data['pricing']))
+                <?php
+                $pricing = $data['pricing'];
+                foreach ($pricing as $key => $price):
+                ?>
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-price-box text-center">
+                        <div class="price-head">
+                            <h2>{{ $price->name }}</h2>
+                            <h3>{{ $price->type }}</h3>
+                        </div>
+                        {!! $price->features !!}
+                        <a href="@if(isset($data['personal_info']['marketplace'])) {{ $data['personal_info']['marketplace'] }} @else # @endif" class="button" target="_blank">PURCHASE NOW</a>
+                    </div>
+                </div>
+                @endforeach
+                @else
                 <!-- Single Price Box -->
                 <div class="col-lg-3 col-md-6">
                     <div class="single-price-box text-center">
@@ -247,7 +333,7 @@
                             <li>Free Update</li>
                             <li>Live chat</li>
                         </ul>
-                        <a href="#" class="button">PURCHASE NOW</a>
+                        <a href="@if(isset($data['personal_info']['marketplace'])) {{ $data['personal_info']['marketplace'] }} @else # @endif" class="button" target="_blank">PURCHASE NOW</a>
                     </div>
                 </div>
                 <!-- // Single Price Box -->
@@ -264,7 +350,7 @@
                             <li>Free Update</li>
                             <li>Live chat</li>
                         </ul>
-                        <a href="#" class="button">PURCHASE NOW</a>
+                        <a href="@if(isset($data['personal_info']['marketplace'])) {{ $data['personal_info']['marketplace'] }} @else # @endif" class="button" target="_blank">PURCHASE NOW</a>
                     </div>
                 </div>
                 <!-- // Single Price Box -->
@@ -281,7 +367,7 @@
                             <li>Free Update</li>
                             <li>Live chat</li>
                         </ul>
-                        <a href="#" class="button">PURCHASE NOW</a>
+                        <a href="@if(isset($data['personal_info']['marketplace'])) {{ $data['personal_info']['marketplace'] }} @else # @endif" class="button" target="_blank">PURCHASE NOW</a>
                     </div>
                 </div>
                 <!-- // Single Price Box -->
@@ -298,10 +384,11 @@
                             <li>Free Update</li>
                             <li>Live chat</li>
                         </ul>
-                        <a href="#" class="button">PURCHASE NOW</a>
+                        <a href="@if(isset($data['personal_info']['marketplace'])) {{ $data['personal_info']['marketplace'] }} @else # @endif" class="button" target="_blank">PURCHASE NOW</a>
                     </div>
                 </div>
                 <!-- // Single Price Box -->
+                @endif
             </div>
         </div>
     </section>
@@ -315,12 +402,58 @@
                 <div class="col-lg-6 ">
                     <div class="section-title text-center">
                         <h2>Why choose Me</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> --}}
                     </div>
                 </div>
             </div>
             <!-- //Section Title -->
             <div class="row">
+                @if(isset($data['choose_info']))
+                    <?php
+                    $choose_info = $data['choose_info'];
+                    foreach ($choose_info as $key => $item):
+                    $icon = 'fa-clock';
+                    $start = "left";
+                    if($key == 0){
+                        $icon ='fa-clock';
+                        $start = "left";
+                    }
+                    elseif($key == 1){
+                        $icon ='fa-calendar-check';
+                        $start = "right";
+                    }
+                    elseif($key == 2){
+                        $icon ='fa-history';
+                        $start = "left";
+                    }
+                    elseif($key == 3){
+                        $icon ='fa-phone-volume';
+                        $start = "right";
+                    }
+                    elseif($key == 4){
+                        $start = "left";
+                        $icon ='fa-clock';
+                    }
+                    elseif($key == 5){
+                        $icon ='fa-calendar-check';
+                        $start = "right";
+                    }
+                    ?>
+                    <div class="col-md-6">
+                        <div class="single-why-me why-me-{{ $start }}">
+                            <div class="why-me-icon">
+                                <div class="d-table">
+                                    <div class="d-table-cell">
+                                        <i class="fa {{ $icon }}"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4>{{ $item->name }}</h4>
+                            {!! $item->description !!}
+                        </div>
+                    </div>
+                    @endforeach
+                @else
                 <!-- Single Why choose me -->
                 <div class="col-md-6">
                     <div class="single-why-me why-me-left">
@@ -388,6 +521,7 @@
                     </div>
                 </div>
                 <!-- // Single Why choose me -->
+                @endif
             </div>
         </div>
     </section>
@@ -400,8 +534,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 ">
                     <div class="section-title text-center">
-                        <h2>Recent Work</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <h2>Recent Works</h2>
+                        {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> --}}
                     </div>
                 </div>
             </div>
@@ -562,20 +696,44 @@
                 <div class="col-lg-6 ">
                     <div class="section-title text-center faq-title">
                         <h2>Frequently asked questions</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> --}}
                     </div>
                 </div>
             </div>
             <!-- //Section Title -->
             <div class="row">
                 <div class="col-lg-5">
+                    @if(isset($data['website_settings']['faq_image']))
+                    <div class="faq-bg bg-img" style="background-image: url({{ asset($data['website_settings']['faq_image']) }})">
+                    @else
                     <div class="faq-bg bg-img" style="background-image: url({{ asset('portfolio/images/faq.jpeg') }})">
+                    @endif
                     </div>
                 </div>
                 <div class="col-lg-7">
                     <!-- FAQ Content -->
                     <div class="faq-content" id="accordion">
+                        @if(isset($data['faq']))
+                        <?php
+                        $faq = $data['faq'];
+                        foreach ($faq as $key => $item):
+                        ?>
+                        <div class="single-faq">
 
+                            <!-- FAQ Header -->
+                            <h4 class="collapsed" data-toggle="collapse" data-target="#faq-{{$key}}">{{ $item->question }}</h4>
+                            <!-- // FAQ Header -->
+
+                            <!-- FAQ Content -->
+                            <div id="faq-{{$key}}" class="collapse {{$key == 0 ? 'show' : ''}}" data-parent="#accordion">
+                                <div class="faq-body">
+                                    {!! $item->answer !!}
+                                </div>
+                            </div>
+                            <!-- FAQ Content -->
+                        </div>
+                        @endforeach
+                        @else
                         <!-- Single FAQ -->
                         <div class="single-faq">
 
@@ -641,7 +799,7 @@
                             <!-- FAQ Content -->
                         </div>
                         <!-- // Single FAQ -->
-
+                        @endif
                     </div>
                     <!-- FAQ Content -->
                 </div>
@@ -658,7 +816,7 @@
                 <div class="col-lg-6 ">
                     <div class="section-title text-center">
                         <h2>Blog Area</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> --}}
                     </div>
                 </div>
             </div>
@@ -719,8 +877,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 ">
                     <div class="section-title text-center">
-                        <h2>Testimonial</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <h2>Testimonials</h2>
+                        {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> --}}
                     </div>
                 </div>
             </div>
@@ -728,6 +886,21 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="testimonials owl-carousel" data-ride="carousel">
+                        @if(isset($data['recommendation']))
+                        <?php
+                        $recommendation = $data['recommendation'];
+                        foreach ($recommendation as $key => $item):
+                        ?>
+                        <div class="single-testimonial text-center">
+                            <div class="testimonial-quote">
+                                <i class="fa fa-quote-right"></i>
+                            </div>
+                            {!! $item->message !!}
+                            <h4>{{ $item->name }} <span>{{ $item->title }}</span></h4>
+
+                        </div>
+                        @endforeach
+                        @else
                         <!-- Single Testimonial -->
                         <div class="single-testimonial text-center">
                             <div class="testimonial-quote">
@@ -764,6 +937,7 @@
 
                         </div>
                         <!-- // Single Testimonial -->
+                        @endif
                     </div>
                 </div>
             </div>
@@ -779,12 +953,38 @@
                 <div class="col-lg-6 ">
                     <div class="section-title text-center">
                         <h2>Team</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> --}}
                     </div>
                 </div>
             </div>
             <!-- //Section Title -->
             <div class="row">
+                @if(isset($data['teams']))
+                <?php
+                $teams = $data['teams'];
+                foreach ($teams as $key => $item):
+                ?>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="single-team">
+                        <div class="team-thumb"
+                            style="background-image: url({{ asset($item->filename) }})">
+                            <div class="team-social">
+                                {{-- <a target="_blank" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
+                                <a target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
+                                <a target="_blank" href="#"><i class="fab fa-pinterest"></i></a> --}}
+                                <h4>{{ $item->name }}</h4>
+                                <span>{{ $item->designation }}</span>
+                            </div>
+                        </div>
+                        <div class="team-content">
+                            <h4>{{ $item->name }}</h4>
+                            <span>{{ $item->designation }}</span>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                @else
                 <!-- Single Team -->
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="single-team">
@@ -861,6 +1061,7 @@
                     </div>
                 </div>
                 <!-- // Single Team -->
+                @endif
             </div>
         </div>
     </section>
@@ -872,15 +1073,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-9">
-                    <h2>Lorem ipsum dolor sit amet</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla fugit optio voluptatem modi,
-                        nemo, cupiditate vel, aspernatur, quae consequatur officia unde totam.</p>
+                    <h2>@if(isset($data['personal_info']['name'])) {{ $data['personal_info']['name'] }} @else Muhammad Mamun @endif</h2>
+                    @if(isset($data['personal_info']['about_me']))
+                    {!! $data['personal_info']['about_me'] !!}
+                    @else
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis numquam ipsam ut deleniti perferendis aliquid ullam, voluptatibus nam sunt eum laudantium cupiditate iste, obcaecati deserunt dolores aliquam quia cum minus animi ipsa est facere culpa fugiat, maxime quam! Itaque aperiam sequi accusantium impedit recusandae nobis quod sunt deserunt provident omnis.
+                    </p>
+                    @endif
                 </div>
                 <div class="col-lg-3">
                     <div class="cta-button">
                         <div class="d-table">
                             <div class="d-table-cell">
-                                <a href="#" class="button">Contact me</a>
+                                <a href="#contact" class="button">Contact me</a>
                             </div>
                         </div>
                     </div>
@@ -899,7 +1105,7 @@
                 <div class="col-lg-6 ">
                     <div class="section-title text-center">
                         <h2>Contact Me</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> --}}
                     </div>
                 </div>
             </div>

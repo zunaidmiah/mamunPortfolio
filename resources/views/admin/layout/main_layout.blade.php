@@ -117,19 +117,19 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#recommendation"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-star"></i>
-                    <span>Recommendations</span>
+                    <span>Testimonials</span>
                 </a>
                 <div id="recommendation" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{  route('add-recommendation')  }}">Add Recommendation</a>
-                        <a class="collapse-item" href="{{  route('all-recommendation')  }}">All Recommendations</a>
+                        <a class="collapse-item" href="{{  route('add-recommendation')  }}">Add Testimonials</a>
+                        <a class="collapse-item" href="{{  route('all-recommendation')  }}">All Testimonials</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Comments Collapse Menu -->
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#comment"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-comment"></i>
@@ -142,7 +142,7 @@
                         <a class="collapse-item" href="{{  route('all-comment')  }}">All Comments</a>
                     </div>
                 </div>
-            </li>
+            </li> --}}
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -161,11 +161,26 @@
                 </a>
                 <div id="settings" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Template Settings:</h6>
+                        <h6 class="collapse-header">Personal Info:</h6>
+                        <a class="collapse-item" href="{{  route('general-info')  }}">General Info</a>
+                        <a class="collapse-item" href="{{  route('social-info')  }}">Social Info</a>
+                        <a class="collapse-item" href="{{  route('website-setting')  }}">Website Info</a>
+                        {{-- <a class="collapse-item" href="{{  route('institution-info')  }}">Educational Info</a> --}}
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Sections:</h6>
+                        <a class="collapse-item" href="{{  route('skills-info')  }}">Skills</a>
+                        <a class="collapse-item" href="{{  route('service-info')  }}">Services</a>
+                        <a class="collapse-item" href="{{  route('pricing-info')  }}">Pricing</a>
+                        <a class="collapse-item" href="{{  route('choose-me-info')  }}">Choose Me</a>
+                        <a class="collapse-item" href="{{  route('faq-info')  }}">FAQ</a>
+                        {{-- <a class="collapse-item" href="{{  route('working-info')  }}">Working Experience</a> --}}
+                        <a class="collapse-item" href="{{  route('team-info')  }}">Team</a>
+                        {{-- <a class="collapse-item" href="{{  route('award-info')  }}">Awards</a> --}}
+                        {{-- <a class="collapse-item" href="{{  route('contribution-info')  }}">Contributions</a> --}}
+                        {{-- <h6 class="collapse-header">Template Settings:</h6>
                         <a class="collapse-item" href="{{  route('template-setting')  }}">Settings</a>
                         <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Website Settings:</h6>
-                        <a class="collapse-item" href="{{  route('website-setting')  }}">Setting</a>
+                        <h6 class="collapse-header">Website Settings:</h6> --}}
                     </div>
                 </div>
             </li>
@@ -179,22 +194,7 @@
                 </a>
                 <div id="account" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Personal Info:</h6>
-                        <a class="collapse-item" href="{{  route('general-info')  }}">General Info</a>
-                        <a class="collapse-item" href="{{  route('social-info')  }}">Social Info</a>
-                        <a class="collapse-item" href="{{  route('institution-info')  }}">Educational Info</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Sections:</h6>
-                        <a class="collapse-item" href="{{  route('pricing-info')  }}">Pricing</a>
-                        <a class="collapse-item" href="{{  route('skills-info')  }}">Skills</a>
-                        <a class="collapse-item" href="{{  route('working-info')  }}">Working Experience</a>
-                        <a class="collapse-item" href="{{  route('service-info')  }}">Quality Services</a>
-                        <a class="collapse-item" href="{{  route('team-info')  }}">Team</a>
-                        <a class="collapse-item" href="{{  route('award-info')  }}">Awards</a>
-                        <a class="collapse-item" href="{{  route('contribution-info')  }}">Contributions</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other:</h6>
-                        <a class="collapse-item" href="{{ route('change-password')  }}">Change Password</a>
+                        {{-- <a class="collapse-item" href="{{ route('change-password')  }}">Change Password</a> --}}
                         <a class="collapse-item" href="{{  route('admin-logout')  }}">Log out</a>
                     </div>
                 </div>

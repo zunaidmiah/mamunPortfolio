@@ -15,7 +15,7 @@ function category_print($items, $str = '')
 
 function get_username(){
     $name = \Cache::rememberForever('username', function () {
-        return DB::table('users')->where('id', 10)->pluck('name')->first();
+        return DB::table('users')->pluck('name')->first();
     });
     return $name;
 }

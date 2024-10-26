@@ -91,7 +91,7 @@
             clear: both;
         }
 </style>
-<?php 
+<?php
     if(isset($_REQUEST['edit'])){
         $id = $_REQUEST['edit'];
         $item = DB::table('recomendations')->where('id', $id)->first();
@@ -121,8 +121,9 @@
                         <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'border-danger' : '' }}" id="name" @if(isset($item)) value="{{ $item->name }}" @endif placeholder="Enter Client name" required>
                     </div>
                     <div class="form-group">
-                        <label for="title">Client Title</label>
+                        <label for="title">Client Designation</label>
                         <input type="text" name="title" class="form-control {{ $errors->has('title') ? 'border-danger' : '' }}" id="title" @if(isset($item)) value="{{ $item->title }}" @endif placeholder="Enter Client title" required>
+                        <input type="hidden" name="star" value="5">
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
@@ -131,7 +132,7 @@
                             <span style="color: red;">You must need to add description</span>
                         @endif
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="star">Star</label>
                         <select class="form-control" name="star" id="star">
                             <option   @if(isset($item) and $item->star == 1) selected @endif value="1">1 Star</option>
@@ -140,17 +141,17 @@
                             <option   @if(isset($item) and $item->star == 4) selected @endif value="4">4 Star</option>
                             <option   @if(isset($item) and $item->star == 5) selected @endif value="5">5 Star</option>
                         </select>
-                    </div>
+                    </div> --}}
                 </div>
 
-                <div class="image container mb-2" style="background-color: #FFFFFF; padding: 20px 15px; border-radius: 10px;">
+                {{-- <div class="image container mb-2" style="background-color: #FFFFFF; padding: 20px 15px; border-radius: 10px;">
                     <label for="upload">Pictures</label>
                     <!-- Upload image input-->
                     <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm field">
                         <input id="upload" name="filename" type="file" onchange="readURL(this);" class="form-control border-2" multiple>
                         <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>
                         <div class="input-group-append">
-                            <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> 
+                            <label for="upload" class="btn btn-light m-0 rounded-pill px-4">
                                 <i class="fa fa-cloud-upload mr-2 text-muted"></i>
                                 <small class="text-uppercase font-weight-bold text-muted">Choose file</small>
                             </label>
@@ -162,14 +163,14 @@
                     <div class="image-area mt-4">
                         <img id="imageResult" src="@if(isset($images)){{ asset($images) }} @endif" alt="recommendation" width="300" height="300" class="img-fluid rounded shadow-sm mx-auto d-block">
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
 
     </form>
 
 </div>
-<script>
+{{-- <script>
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -200,6 +201,6 @@
     var fileName = input.files[0].name;
     infoArea.textContent = 'File name: ' + fileName;
     }
-</script>
+</script> --}}
 
 @endsection

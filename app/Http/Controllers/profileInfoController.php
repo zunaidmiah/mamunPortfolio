@@ -527,6 +527,151 @@ class profileInfoController extends Controller
     }
     // End Services add and delete functionality
 
+    // Choose me add and delete functionality
+    public function chooseMe(){
+        if(session('user_type')){
+            if(session('user_type') == 'admin') return view('admin.information.choose');
+            else return redirect()->route('login');
+        } else{
+            return redirect()->route('login');
+        }
+    }
+    public function choose_info(Request $req){
+        if(!empty($req)){
+            $datas = $req->all();
+            array_shift($datas);
+            $field = array_keys($datas);
+            $total = count($datas['name']);
+            $service = DB::table('user_metas')->where('user_key', 'choose_info')->where("user_id", session('user_id'))->pluck('user_value')->first();
+            if($service){
+                $service = json_decode($service, true);
+            } else{
+                $service = [];
+            }
+            if($total != 0){
+                for($i = 0; $i<$total; $i++){
+                    $values = [];
+                    $values[] = $datas['name'][$i];
+                    $values[] = $datas['description'][$i];
+                    $service[] = array_combine($field, $values);
+
+                }
+
+                $array = [
+                    'user_key' => 'choose_info',
+                    'user_value' => json_encode($service),
+                    'user_group' => 'choose',
+                    'user_id' => session('user_id')
+                ];
+                DB::table('user_metas')->updateOrInsert(
+                                                    ['user_key' => 'choose_info'],
+                                                    $array
+                                                );
+                \Cache::forget('choose');
+                return redirect()->back()->with('message', "Choose Info saved successfully");
+            }
+        } else return redirect()->back()->with('empty_message', 'Please insert validated information.');
+
+
+    }
+    public function choose_destroy($id){
+        $service = DB::table('user_metas')->where('user_key', 'choose_info')->where("user_id", session('user_id'))->pluck('user_value')->first();
+        if($service){
+            $service = json_decode($service, true);
+            foreach($service as $key => $item){
+                if($key == $id){
+                    unset($service[$key]);
+                }
+            }
+        }
+        $array = [
+            'user_key' => 'choose_info',
+            'user_value' => json_encode($service),
+            'user_group' => 'choose',
+            'user_id' => session('user_id')
+        ];
+        DB::table('user_metas')->updateOrInsert(
+                                            ['user_key' => 'choose_info'],
+                                            $array
+                                        );
+        \Cache::forget('choose');
+        return true;
+    }
+    // End choose me add and delete functionality
+
+
+    // FAQ add and delete functionality
+    public function faq(){
+        if(session('user_type')){
+            if(session('user_type') == 'admin') return view('admin.information.faq');
+            else return redirect()->route('login');
+        } else{
+            return redirect()->route('login');
+        }
+    }
+    public function faq_info(Request $req){
+        if(!empty($req)){
+            $datas = $req->all();
+            array_shift($datas);
+            $field = array_keys($datas);
+            $total = count($datas['question']);
+            $faq = DB::table('user_metas')->where('user_key', 'faq_info')->where("user_id", session('user_id'))->pluck('user_value')->first();
+            if($faq){
+                $faq = json_decode($faq, true);
+            } else{
+                $faq = [];
+            }
+            if($total != 0){
+                for($i = 0; $i<$total; $i++){
+                    $values = [];
+                    $values[] = $datas['question'][$i];
+                    $values[] = $datas['answer'][$i];
+                    $faq[] = array_combine($field, $values);
+
+                }
+
+                $array = [
+                    'user_key' => 'faq_info',
+                    'user_value' => json_encode($faq),
+                    'user_group' => 'faq',
+                    'user_id' => session('user_id')
+                ];
+                DB::table('user_metas')->updateOrInsert(
+                                                    ['user_key' => 'faq_info'],
+                                                    $array
+                                                );
+                \Cache::forget('faq');
+                return redirect()->back()->with('message', "FAQ Info saved successfully");
+            }
+        } else return redirect()->back()->with('empty_message', 'Please insert validated information.');
+
+
+    }
+    public function faq_destroy($id){
+        $faq = DB::table('user_metas')->where('user_key', 'faq_info')->where("user_id", session('user_id'))->pluck('user_value')->first();
+        if($faq){
+            $faq = json_decode($faq, true);
+            foreach($faq as $key => $item){
+                if($key == $id){
+                    unset($faq[$key]);
+                }
+            }
+        }
+        $array = [
+            'user_key' => 'faq_info',
+            'user_value' => json_encode($faq),
+            'user_group' => 'faq',
+            'user_id' => session('user_id')
+        ];
+        DB::table('user_metas')->updateOrInsert(
+                                            ['user_key' => 'faq_info'],
+                                            $array
+                                        );
+        \Cache::forget('faq');
+        return true;
+    }
+    // End FAQ add and delete functionality
+
 
     // Awards add and delete functionality
     public function award(){

@@ -52,8 +52,10 @@
     var element = $('.typed');
 
     $(function () {
+        var text = $("#ticker_text").val();
+        let array = text.split(",");
         element.typed({
-            strings: ["Web Designer.", "Graphic Designer."],
+            strings: array,
             typeSpeed: 100,
             loop: true,
             autoplay: true,

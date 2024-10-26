@@ -54,6 +54,9 @@ class FrontEndController extends Controller
         $data['blogs'] = $this->get_blogs();
         $data['social_info'] = $this->get_social_data();
         $data['website_settings'] = $this->get_website_data();
+        $data['choose_info'] = $this->get_choose_data();
+        $data['faq'] = $this->get_faq_data();
+        $data['recommendation'] = $this->get_recommendation_data();
         return $data;
     }
 
@@ -64,6 +67,26 @@ class FrontEndController extends Controller
         });
         if($service){
             return json_decode($service[0]);
+        }
+    }
+
+    // get choose me data
+    public function get_choose_data(){
+        $choose =  \Cache::remember('choose', 1000, function () {
+            return DB::table('user_metas')->where('user_group', 'choose')->pluck('user_value')->toArray();
+        });
+        if($choose){
+            return json_decode($choose[0]);
+        }
+    }
+
+    // get FAQ data
+    public function get_faq_data(){
+        $choose =  \Cache::remember('faq', 1000, function () {
+            return DB::table('user_metas')->where('user_group', 'faq')->pluck('user_value')->toArray();
+        });
+        if($choose){
+            return json_decode($choose[0]);
         }
     }
 

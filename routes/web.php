@@ -167,6 +167,10 @@ Route::prefix('sl-admin')->group(function(){
 
         Route::get('service-info', 'service')->name('service-info');
 
+        Route::get('choose-me-info', 'chooseMe')->name('choose-me-info');
+
+        Route::get('faq-info', 'faq')->name('faq-info');
+
         Route::get('award-info', 'award')->name('award-info');
 
         Route::get('contribution-info', 'contribution')->name('contribution-info');
@@ -194,6 +198,14 @@ Route::prefix('sl-admin')->group(function(){
         Route::post('service-info-db', 'service_info')->name('service-info-db');
 
         Route::get('delete-service/{id}', 'service_destroy')->name('delete-service');
+
+        Route::post('choose-info-db', 'choose_info')->name('choose-info-db');
+
+        Route::get('delete-choose/{id}', 'choose_destroy')->name('delete-choose');
+
+        Route::post('faq-info-db', 'faq_info')->name('faq-info-db');
+
+        Route::get('delete-faq/{id}', 'faq_destroy')->name('delete-faq');
 
         Route::post('award-info-db', 'award_info')->name('award-info-db');
 

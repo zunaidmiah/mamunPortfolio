@@ -47,7 +47,7 @@
         <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container">
                 <!-- Logo -->
-                <a class="navbar-brand logo" href="index.html">
+                <a class="navbar-brand logo" href="/">
                     <img src="{{ asset('logo.png') }}" alt="logo">
                     <span style="margin-left: -6%; color: white; text-transform: uppercase; font-size: 22px; font-weight: 700;">Annotation<span class="logo-text" style="color: #000;">bd</span></span>
                 </a>
@@ -84,8 +84,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="copyright-text">
-                        <p class="text-white">&copy; 2018 <a href="https://www.begindot.com/">A Template Designed by
-                                Begindot</a></p>
+                        <p class="text-white">&copy; 2024 <a href="https://www.annotationbd.com/">Copyright © annotationbd</a></p>
                     </div>
                 </div>
             </div>

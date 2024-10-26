@@ -25,49 +25,47 @@
                     </h4>
                     <hr>
                 </div>
-                @if(session('msg'))
-                    <span class="badge badge-success">{{ session('msg') }}</span>
-                @endif
-                <div class="card-columns">
-                <?php
-                $recommendation = DB::table('recomendations')->orderBy('id', 'desc')->where("is_pending", 0)->get()->toArray();
-                if($recommendation and count($recommendation) >= 1):
+                <div class="row">
+                    @if(session('msg'))
+                        <span class="badge badge-success">{{ session('msg') }}</span>
+                    @endif
+                    <div class="card-columns">
+                    <?php
+                    $recommendation = DB::table('recomendations')->orderBy('id', 'desc')->where("is_pending", 0)->get()->toArray();
+                    if($recommendation and count($recommendation) >= 1):
                     foreach($recommendation as $item):
                     $media = get_media_first($item->id, 'recommendation');
-                ?>  
-
-
-                    <div class="card" style="width: auto;">
-                        <img src="{{ asset($media)  }}" class="card-img-top" alt="{{ $item->name }}"  width="400" height="300">
-                        <div class="card-body">
-                            <h6><b>Name : </b>{{ $item->name }}</h6>
-                            <h6><b>Title : </b>{{ $item->title }}</h6>
-                            <h6><b>Rating : </b></h6>
-                            <div title="{{  $item->star  }} star rating">
-                                <?php for($i=1;$i<=5;$i++){ ?>
-                                <span class="fa fa-star @if(abs($item->star) >= $i) checked @endif"></span>
-                                <?php } ?>
-                            </div>
-                            <div class="mt-1">
-                                <p class="text-justify text-truncate para mb-0"><b>Status: </b><br>@if($item->is_hidden == 1) Hidden @elseif($item->is_deleted == 1) Deleted @else Approved @endif<br></p>
-                                <p class="text-justify text-truncate para mb-0"><b>Message: <br></b>{{ strip_tags($item->message) }}<br><br></p>
-                            </div>
-                            <div class="mt-1 d-flex justify-content-between">
-                                <a href="/sl-admin/add-recommendation?edit=<?php echo $item->id; ?>" class="btn btn-outline-warning btn-sm mt-2" type="button">Edit</a><br>
-                                <a href="javascript:delete_recommendation({{ $item->id }})" class="btn btn-outline-danger btn-sm mt-2" type="button">Delete</a>
+                    ?>
+                    <div class="col col-md-6">
+                        <div class="card" style="width: auto;">
+                            {{-- <img src="{{ asset($media)  }}" class="card-img-top" alt="{{ $item->name }}"  width="400" height="300"> --}}
+                            <div class="card-body">
+                                <h6><b>Name : </b>{{ $item->name }}</h6>
+                                <h6><b>Title : </b>{{ $item->title }}</h6>
+                                {{-- <h6><b>Rating : </b></h6>
+                                <div title="{{  $item->star  }} star rating">
+                                    <?php //for($i=1;$i<=5;$i++){ ?>
+                                    <span class="fa fa-star @if(abs($item->star) >= $i) checked @endif"></span>
+                                    <?php //} ?>
+                                </div> --}}
+                                <div class="mt-1">
+                                    <p class="text-justify text-truncate para mb-0"><b>Status: </b><br>@if($item->is_hidden == 1) Hidden @elseif($item->is_deleted == 1) Deleted @else Approved @endif<br></p>
+                                    <p class="text-justify text-truncate para mb-0"><b>Message: <br></b>{{ strip_tags($item->message) }}<br><br></p>
+                                </div>
+                                <div class="mt-1 d-flex justify-content-between">
+                                    <a href="/sl-admin/add-recommendation?edit=<?php echo $item->id; ?>" class="btn btn-outline-warning btn-sm mt-2" type="button">Edit</a><br>
+                                    <a href="javascript:delete_recommendation({{ $item->id }})" class="btn btn-outline-danger btn-sm mt-2" type="button">Delete</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-
-                    
-
-                <?php
+                    <?php
                     endforeach;
-                ?>
-                @else
-                No data Found
-                @endif
+                    ?>
+                    @else
+                    No data Found
+                    @endif
+                    </div>
                 </div>
             </div>
         </div>
