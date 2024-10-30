@@ -91,7 +91,7 @@
             clear: both;
         }
 </style>
-<?php 
+<?php
     if(isset($_REQUEST['edit'])){
         $id = $_REQUEST['edit'];
         $item = DB::table('portfolios')->where('id', $id)->first();
@@ -123,7 +123,7 @@
                         <label for="title">Portfolio Title</label>
                         <input type="text" name="title" class="form-control {{ $errors->has('title') ? 'border-danger' : '' }}" id="title" @if(isset($item)) value="{{ $item->title }}" @endif placeholder="Enter portfolio title" required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group d-none">
                         <label for="description">Description</label>
                         <textarea class="ckeditor" name="description" id="description" cols="30" rows="10">@if(isset($item)) {{ $item->description }} @endif</textarea>
                         @if($errors->has('description'))
@@ -148,17 +148,17 @@
                               <?php } ?>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group d-none">
                         <label for="backend">Backend</label>
-                        <input type="text" name="technology[]" class="form-control {{ $errors->has('technology') ? 'border-danger' : '' }}" id="backend" @if(isset($item)) value="{{ $backend }}" @endif placeholder="Enter Backend language separate by comma" required>
+                        <input type="text" name="technology[]" class="form-control {{ $errors->has('technology') ? 'border-danger' : '' }}" id="backend" @if(isset($item)) value="{{ $backend }}" @endif placeholder="Enter Backend language separate by comma">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group d-none">
                         <label for="frontend">Frontend</label>
-                        <input type="text" name="technology[]" class="form-control {{ $errors->has('technology') ? 'border-danger' : '' }}" id="frontend" @if(isset($item)) value="{{ $frontend }}" @endif placeholder="Enter Frontend language separate by comma" required>
+                        <input type="text" name="technology[]" class="form-control {{ $errors->has('technology') ? 'border-danger' : '' }}" id="frontend" @if(isset($item)) value="{{ $frontend }}" @endif placeholder="Enter Frontend language separate by comma">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group d-none">
                         <label for="technology">Technology</label>
-                        <input type="text" name="technology[]" class="form-control {{ $errors->has('technology') ? 'border-danger' : '' }}" id="technology" @if(isset($item)) value="{{ $technology }}" @endif placeholder="Enter technology separate by comma" required>
+                        <input type="text" name="technology[]" class="form-control {{ $errors->has('technology') ? 'border-danger' : '' }}" id="technology" @if(isset($item)) value="{{ $technology }}" @endif placeholder="Enter technology separate by comma">
                     </div>
                 </div>
 
@@ -169,7 +169,7 @@
                         <input id="upload" name="image[]" type="file" onchange="readURL(this);" class="form-control border-2" multiple>
                         <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>
                         <div class="input-group-append">
-                            <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> 
+                            <label for="upload" class="btn btn-light m-0 rounded-pill px-4">
                                 <i class="fa fa-cloud-upload mr-2 text-muted"></i>
                                 <small class="text-uppercase font-weight-bold text-muted">Choose file</small>
                             </label>
@@ -185,14 +185,14 @@
 
                 <div class="input-group control-group increment" >
                     <input type="file" name="filename[]" class="form-control" accept=".jpg, .jpeg, .png">
-                    <div class="input-group-btn"> 
+                    <div class="input-group-btn d-none">
                       <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
                     </div>
                   </div>
-                  <div class="clone hide">
+                  <div class="clone hide d-none">
                     <div class="control-group input-group" style="margin-top:10px">
                       <input type="file" name="filename[]" class="form-control" accept=".jpg, .jpeg, .png">
-                      <div class="input-group-btn"> 
+                      <div class="input-group-btn">
                         <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
                       </div>
                     </div>
@@ -224,15 +224,15 @@
 
     jQuery(document).ready(function() {
 
-        jQuery(".btn-success").click(function(){ 
+        jQuery(".btn-success").click(function(){
             var html = $(".clone").html();
             jQuery(".increment").after(html);
         });
 
-        jQuery("body").on("click",".btn-danger",function(){ 
+        jQuery("body").on("click",".btn-danger",function(){
             jQuery(this).parents(".control-group").remove();
         });
-        
+
     });
 
     // function readURL(input) {

@@ -27,8 +27,7 @@ class FrontEndController extends Controller
     // blog_details page
     public function blog_details($url){
         $data['website_settings'] = $this->get_website_data();
-        $data['social_info'] = $this->get_social_data();
-        $data['blog'] = $this->get_blog_by_url($url);
+        $data['blog'] = $this->get_blog_by_id($url);
         if(isset($data['blog']['id'])){
             $blog_id = $data['blog']['id'];
             $data['blog_category'] = $this->get_blog_category($blog_id);
@@ -228,8 +227,8 @@ class FrontEndController extends Controller
     }
 
     // get blog by url
-    public function get_blog_by_url($url){
-        $blog = DB::table('blogs')->where('title', 'LIKE' ,urldecode($url))->where('is_hidden', 0)->where('is_deleted', 0)->first();
+    public function get_blog_by_id($id){
+        $blog = DB::table('blogs')->where('id', $id)->where('is_hidden', 0)->where('is_deleted', 0)->first();
         if($blog){
             return collect($blog)->toArray();
         }

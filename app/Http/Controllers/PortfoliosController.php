@@ -26,10 +26,10 @@ class PortfoliosController extends Controller
 
             $this->validate( $request, [
                 'title' => 'required',
-                'description' => 'required',
+                // 'description' => 'required',
                 'link' => 'required',
                 'category' => 'required',
-                'technology' => 'required'
+                // 'technology' => 'required'
             ]);
             $technology_type = ['backend', 'frontend', 'technology'];
             $technology = json_encode(array_combine($technology_type, $request->input('technology')));
@@ -73,10 +73,10 @@ class PortfoliosController extends Controller
 
             $this->validate( $request, [
                 'title' => 'required',
-                'description' => 'required',
+                // 'description' => 'required',
                 'category' => 'required',
                 'link' => 'required',
-                'technology' => 'required'
+                // 'technology' => 'required'
             ]);
             $technology_type = ['backend', 'frontend', 'technology'];
             $technology = json_encode(array_combine($technology_type, $request->input('technology')));

@@ -27,7 +27,7 @@ Route::controller(FrontEndController::class)->group( function(){
 
     Route::get('/blog', 'blog')->name('blog');
 
-    Route::get('/blog-details/{url}', 'blog_details')->name('blog-details');
+    Route::get('/blog-details/{id}', 'blog_details')->name('blog-details');
 
     Route::post('/comment-db', 'comment_db');
 

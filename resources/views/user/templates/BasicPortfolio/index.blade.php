@@ -539,6 +539,9 @@
                     </div>
                 </div>
             </div>
+            @php
+                $portfolioCategories = DB::table('categories')->where('type', 'portfolio')->select('id', 'name')->get()->keyBy('id');
+            @endphp
             <!-- //Section Title -->
             <div class="row justify-content-center">
                 <!-- Work List Menu-->
@@ -546,17 +549,48 @@
                     <div class="work-list text-center">
                         <ul>
                             <li class="filter" class="active" data-filter="all">ALL</li>
+                            @if(count($portfolioCategories) > 0 and count($data['portfolios']) > 0)
+                            @foreach ($portfolioCategories as $portfolioCat)
+                            <li class="filter" data-filter=".{{ str_replace(" ", "_", $portfolioCat->name) }}">{{ $portfolioCat->name }}</li>
+                            @endforeach
+                            @else
                             <li class="filter" data-filter=".web">Web Design</li>
                             <li class="filter" data-filter=".graphic">Graphic</li>
                             <li class="filter" data-filter=".logo">Logo</li>
                             <li class="filter" data-filter=".wp">Wordpress</li>
                             <li class="filter" data-filter=".other">Other</li>
+                            @endif
                         </ul>
                     </div>
                 </div>
                 <!-- // Work List Menu -->
             </div>
             <div class="row portfolio">
+                @if(count($portfolioCategories) > 0 and count($data['portfolios']) > 0)
+                @foreach ($data['portfolios'] as $item)
+                @php
+                    $media = DB::table('media')->where('type', 'portfolios')->where('rel_id', $item->id)->value('link');
+                    $categoryName = '';
+                    if(isset($portfolioCategories[$item->category]) and isset($portfolioCategories[$item->category]->name)){
+                        $categoryName = str_replace(" ", "_", $portfolioCategories[$item->category]->name);
+                    }
+                @endphp
+                <!-- Single Portfolio -->
+                <div class="col-lg-4 col-md-6 mix {{ $categoryName  }}">
+                    <div class="single-portfolio"
+                        style="background-image: url({{ asset($media) }})">
+                        <div class="portfolio-icon text-center">
+                            <a href="{{ $item->link }}" target="_blank"><i
+                                    class="fas fa-expand-arrows-alt"></i></a>
+                        </div>
+                        <div class="portfolio-hover">
+                            <h4><span>{{ $item->title }}</span></h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- // Single Portfolio -->
+                @endforeach
+                @else
                 <!-- Single Portfolio -->
                 <div class="col-lg-4 col-md-6 mix wp graphic">
                     <div class="single-portfolio"
@@ -682,6 +716,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
                 <!-- // Single Portfolio -->
             </div>
         </div>
@@ -822,6 +857,20 @@
             </div>
             <!-- //Section Title -->
             <div class="row">
+                @if(count($data['blogs']) > 0 )
+                @foreach ($data['blogs'] as $blog)
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-blog">
+                        <div class="blog-thumb"
+                            style="background-image: url({{ asset('portfolio/images/blog/img-1.jpg') }})"></div>
+                        <h4 class="blog-title"><a href="single-blog.html">{{ $blog->title }}</a></h4>
+                        <p class="blog-meta"><a href="#">{{ get_username() }}</a>, {{ date('d M Y', strtotime($blog->created_at)) }}</p>
+                        <p style="min-height: 100px; max-height: 100px;">{{ strip_tags(substr($blog->description, 0, 150))."..." }}</p>
+                        <a href="{{ route('blog-details', $blog->id) }}" class="button">Read More</a>
+                    </div>
+                </div>
+                @endforeach
+                @else
                 <!-- Single Blog -->
                 <div class="col-lg-4 col-md-6">
                     <div class="single-blog">
@@ -861,10 +910,13 @@
                     </div>
                 </div>
                 <!-- Single Blog -->
+                @endif
             </div>
+            @if($data['blogs']->hasPages()	)
             <div class="d-flex justify-content-center single-blog bg-none" style="background-color: unset; box-shadow: unset;">
                 <a href="{{ route('blog') }}" class="button">Show ALL</a>
             </div>
+            @endif
         </div>
     </section>
     <!-- ====== // Blog Section ====== -->
