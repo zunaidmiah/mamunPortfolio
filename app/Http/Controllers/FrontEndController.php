@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\comments;
-
+use App\Mail\ContactFormMail;
+use Illuminate\Support\Facades\Mail;
 class FrontEndController extends Controller
 {
     public function index(){
@@ -16,11 +17,10 @@ class FrontEndController extends Controller
 
     // blog page
     public function blog(){
-        $template_dir = get_active_template();
         $data['blogs'] = $this->get_blogs();
         $data['website_settings'] = $this->get_website_data();
-        $data['social_info'] = $this->get_social_data();
-        $data['personal_info'] = $this->get_personal_data();
+        // $data['social_info'] = $this->get_social_data();
+        // $data['personal_info'] = $this->get_personal_data();
         return view('user.templates.BasicPortfolio.blog')->with('data', $data);
     }
 
@@ -34,8 +34,9 @@ class FrontEndController extends Controller
             $data['blog_images'] = $this->get_blog_images($blog_id);
             $data['related_blogs'] = $this->get_related_blog($blog_id);
             $data['blog_comments'] = $this->get_blog_comments($blog_id);
+            $data['social_info'] = $this->get_social_data();
         }
-        $data['personal_info'] = $this->get_personal_data();
+        // $data['personal_info'] = $this->get_personal_data();
         return view('user.templates.BasicPortfolio.blog-details')->with('data', $data);
     }
 
@@ -171,7 +172,7 @@ class FrontEndController extends Controller
     // get all blogs
     public function get_blogs($pagination =  false){
         $blogs = \Cache::remember('blogs', 1000, function () {
-            return DB::table('blogs')->where('is_hidden', 0)->where('is_deleted', 0)->orderby('id', 'desc')->paginate(6);
+            return DB::table('blogs')->where('is_hidden', 0)->where('is_deleted', 0)->orderby('id', 'desc')->paginate(12);
         });
         if($blogs){
             return $blogs;
@@ -371,6 +372,38 @@ class FrontEndController extends Controller
         }
 
         return false;
+    }
+
+    // send mail
+    public function send_mail(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
+        $name = strip_tags(trim($request->name));
+        $name = str_replace(array("\r","\n"),array(" "," "),$name);
+        $email = filter_var(trim($request->email), FILTER_SANITIZE_EMAIL);
+        $subject = trim($request->subject);
+        $message = trim($request->message);
+
+        if ( empty($name) OR empty($subject) OR empty($message) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return redirect()->back()->with('error', 'Please complete the form and try again.');
+        }
+
+        $details = [
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'subject' => $request->input('subject'),
+            'message' => $request->input('message'),
+        ];
+        try{
+            Mail::to(DB::table('users')->value('email'))->send(new ContactFormMail($details));
+            return redirect()->back()->with('success', 'Thank You! Your message has been sent.');
+        } catch (\Exception $e){
+            return redirect()->back()->with('error', 'Oops! Something went wrong and we couldn`t send your message.');
+        }
     }
 
 

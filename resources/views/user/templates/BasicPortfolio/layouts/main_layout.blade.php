@@ -92,11 +92,6 @@
     </footer>
     <!-- ====== // Footer Area ====== -->
 
-
-
-
-
-
     <!-- ====== ALL JS ====== -->
     <script src="{{ asset('portfolio/js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('portfolio/js/bootstrap.min.js') }}"></script>

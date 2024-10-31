@@ -63,8 +63,8 @@
                         <!-- Social Link -->
                         <div class="social-aria">
                             @if(isset($data['social_info']))
-                            <a href="https://www.facebook.com/{{ $data['social_info']['facebook_url'] }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
                             @if(array_key_exists('facebook_url', $data['social_info']))
+                            <a href="https://www.facebook.com/{{ $data['social_info']['facebook_url'] }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
                             @endif
                             @if(array_key_exists('twitter_url', $data['social_info']))
                             <a href="https://www.twitter.com/{{ $data['social_info']['twitter_url'] }}" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -859,11 +859,14 @@
             <div class="row">
                 @if(count($data['blogs']) > 0 )
                 @foreach ($data['blogs'] as $blog)
+                @php
+                    $media = DB::table('media')->where('type', 'blogs')->where('rel_id', $blog->id)->value('link');
+                @endphp
                 <div class="col-lg-4 col-md-6">
                     <div class="single-blog">
                         <div class="blog-thumb"
-                            style="background-image: url({{ asset('portfolio/images/blog/img-1.jpg') }})"></div>
-                        <h4 class="blog-title"><a href="single-blog.html">{{ $blog->title }}</a></h4>
+                            style="background-image: url({{ asset($media) }})"></div>
+                        <h4 class="blog-title"><a href="{{ route('blog-details', $blog->id) }}">{{ $blog->title }}</a></h4>
                         <p class="blog-meta"><a href="#">{{ get_username() }}</a>, {{ date('d M Y', strtotime($blog->created_at)) }}</p>
                         <p style="min-height: 100px; max-height: 100px;">{{ strip_tags(substr($blog->description, 0, 150))."..." }}</p>
                         <a href="{{ route('blog-details', $blog->id) }}" class="button">Read More</a>
@@ -876,11 +879,11 @@
                     <div class="single-blog">
                         <div class="blog-thumb"
                             style="background-image: url({{ asset('portfolio/images/blog/img-1.jpg') }})"></div>
-                        <h4 class="blog-title"><a href="single-blog.html">Full Responsive</a></h4>
+                        <h4 class="blog-title"><a href="#">Full Responsive</a></h4>
                         <p class="blog-meta"><a href="#">AL Mamun</a>, 22 FEB 2018</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque similique velit,
                             officiis non.</p>
-                        <a href="single-blog.html" class="button">Read More</a>
+                        <a href="#" class="button">Read More</a>
                     </div>
                 </div>
                 <!-- Single Blog -->
@@ -889,11 +892,11 @@
                     <div class="single-blog">
                         <div class="blog-thumb"
                             style="background-image: url({{ asset('portfolio/images/blog/img-2.jpg') }})"></div>
-                        <h4 class="blog-title"><a href="single-blog.html">Lifetime free Update</a></h4>
+                        <h4 class="blog-title"><a href="#">Lifetime free Update</a></h4>
                         <p class="blog-meta"><a href="#">AL Mamun</a>, 22 FEB 2018</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque similique velit,
                             officiis non.</p>
-                        <a href="single-blog.html" class="button">Read More</a>
+                        <a href="#" class="button">Read More</a>
                     </div>
                 </div>
                 <!-- Single Blog -->
@@ -902,11 +905,11 @@
                     <div class="single-blog">
                         <div class="blog-thumb"
                             style="background-image: url({{ asset('portfolio/images/blog/img-3.jpg') }})"></div>
-                        <h4 class="blog-title"><a href="single-blog.html">Unlimited Support</a></h4>
+                        <h4 class="blog-title"><a href="#">Unlimited Support</a></h4>
                         <p class="blog-meta"><a href="#">AL Mamun</a>, 22 FEB 2018</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque similique velit,
                             officiis non.</p>
-                        <a href="single-blog.html" class="button">Read More</a>
+                        <a href="#" class="button">Read More</a>
                     </div>
                 </div>
                 <!-- Single Blog -->
@@ -1167,26 +1170,32 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <!-- Form -->
-                    <form id="contact-form" action="mail.php" method="post" class="contact-form bg-white">
+                    <form action="{{ route('send-mail') }}" method="post" class="contact-form bg-white">
+                        @csrf
                         <div class="row">
                             <div class="col-lg-6 form-group">
-                                <input type="text" class="form-control" name="name" required placeholder="Name">
+                                <input type="text" class="form-control" name="name" required placeholder="Name" value="{{ old("name") }}">
                             </div>
                             <div class="col-lg-6 form-group">
-                                <input type="email" class="form-control" name="email" required placeholder="Email">
+                                <input type="email" class="form-control" name="email" required placeholder="Email" value="{{ old("email") }}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="subject" required placeholder="Subject">
+                            <input type="text" class="form-control" name="subject" required placeholder="Subject" value="{{ old("subject") }}">
                         </div>
 
                         <div class="form-group">
                             <textarea name="message" id="" class="form-control" required placeholder="Message"></textarea>
                         </div>
                         <div class="form-btn text-center">
-                            <button class="button" type="submit">Send Message</button>
-                            <p class="form-message"></p>
+                            <input class="button" type="submit" value="Send Message" />
                         </div>
+                        @if (session('error'))
+                           <span class="badge" style="color: white; background-color: red; padding: 5px 10px; border-radius: 10px;">{{ session('error') }}</span>
+                        @endif
+                        @if (session('success'))
+                           <span class="badge" style="color: white; background-color: green; padding: 5px 10px; border-radius: 10px;">{{ session('success') }}</span>
+                        @endif
                     </form>
                     <!-- // Form -->
                 </div>

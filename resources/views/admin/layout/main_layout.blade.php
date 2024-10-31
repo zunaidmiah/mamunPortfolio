@@ -129,7 +129,7 @@
             </li>
 
             <!-- Nav Item - Comments Collapse Menu -->
-            {{-- <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#comment"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-comment"></i>
@@ -142,7 +142,7 @@
                         <a class="collapse-item" href="{{  route('all-comment')  }}">All Comments</a>
                     </div>
                 </div>
-            </li> --}}
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">

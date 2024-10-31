@@ -31,6 +31,8 @@ Route::controller(FrontEndController::class)->group( function(){
 
     Route::post('/comment-db', 'comment_db');
 
+    Route::post('/send-mail', 'send_mail')->name('send-mail');
+
 
 });
 
