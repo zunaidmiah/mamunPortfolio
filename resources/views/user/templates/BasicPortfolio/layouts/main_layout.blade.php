@@ -48,7 +48,11 @@
             <div class="container">
                 <!-- Logo -->
                 <a class="navbar-brand logo" href="/">
+                    @if(isset($data['website_settings']['logo']))
+                    <img src="{{ asset($data['website_settings']['logo']) }}" alt="" style="margin-right: 6%;"/>
+                    @else
                     <img src="{{ asset('logo.png') }}" alt="logo">
+                    @endif
                     <span style="margin-left: -6%; color: white; text-transform: uppercase; font-size: 22px; font-weight: 700;">Annotation<span class="logo-text" style="color: #000;">bd</span></span>
                 </a>
                 <!-- // Logo -->
@@ -62,7 +66,7 @@
                 <div class="collapse navbar-collapse main-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active"><a class="nav-link" href="#home">HOME</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#about">ABOUT</a></li>
+                        <!--<li class="nav-item"><a class="nav-link" href="#about">ABOUT</a></li>-->
                         <li class="nav-item"><a class="nav-link" href="#service">SERVICE</a></li>
                         <li class="nav-item"><a class="nav-link" href="#pricing">PRICING</a></li>
                         <li class="nav-item"><a class="nav-link" href="#portfolio">PORTFOLIO</a></li>

@@ -481,6 +481,15 @@ class profileInfoController extends Controller
                     $values = [];
                     $values[] = $datas['name'][$i];
                     $values[] = $datas['description'][$i];
+                    $file = $datas['image'][$i];
+                    $filename = $file->getClientOriginalName();
+                    $path = public_path('uploads/files');
+                    if (!file_exists($path)) {
+                        mkdir($path, 0777, true);
+                    }
+                    $file->move($path, $filename);
+                
+                    $values[] = 'uploads/files/'.$filename;
                     $service[] = array_combine($field, $values);
 
                 }

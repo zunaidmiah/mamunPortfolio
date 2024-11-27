@@ -39,175 +39,6 @@
     <!-- ====== //Hero Area ====== -->
 
 
-    <!-- ====== About Area ====== -->
-    <section id="about" class="section-padding about-area bg-light">
-        <div class="container">
-            <!-- Section Title -->
-            <div class="row justify-content-center">
-                <div class="col-lg-6 ">
-                    <div class="section-title text-center">
-                        <h2>About Me</h2>
-                        {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus placeat unde non modi,
-                            facilis, quae?</p> --}}
-                    </div>
-                </div>
-            </div>
-            <!-- //Section Title -->
-            <div class="row">
-                <div class="col-lg-6">
-                    @if(isset($data['website_settings']['about_image']))
-                    <div class="about-bg" style="background-image:url({{ asset($data['website_settings']['about_image']) }})">
-                    @else
-                    <div class="about-bg" style="background-image:url({{ asset('portfolio/images/about-bg.jpg') }})">
-                    @endif
-                        <!-- Social Link -->
-                        <div class="social-aria">
-                            @if(isset($data['social_info']))
-                            @if(array_key_exists('facebook_url', $data['social_info']))
-                            <a href="https://www.facebook.com/{{ $data['social_info']['facebook_url'] }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                            @endif
-                            @if(array_key_exists('twitter_url', $data['social_info']))
-                            <a href="https://www.twitter.com/{{ $data['social_info']['twitter_url'] }}" target="_blank"><i class="fab fa-twitter"></i></a>
-                            @endif
-                            @if(array_key_exists('linkedin_url', $data['social_info']))
-                            <a href="https://www.linkedin.com/in/{{ $data['social_info']['linkedin_url'] }}" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            @endif
-                            @if(array_key_exists('instagram_url', $data['social_info']))
-                            <a href="https://www.instagram.com/{{ $data['social_info']['instagram_url'] }}" target="_blank"><i class="fab fa-instagram"></i></a>
-                            @endif
-                            {{-- @if(array_key_exists('github_url', $data['social_info']))
-                            <a href="https://www.github.com/{{ $data['social_info']['github_url'] }}" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
-                            @endif --}}
-                            @if(array_key_exists('youtube_url', $data['social_info']))
-                            <a href="https://www.youtube.com/channel/{{ $data['social_info']['youtube_url'] }}" target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i></a>
-                            @endif
-                            @else
-                            <a target="_blank" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
-                            <a target="_blank" href="#"><i class="fab fa-instagram"></i></a>
-                            <a target="_blank" href="#"><i class="fab fa-pinterest"></i></a>
-                            <a target="_blank" href="#"><i class="fab fa-youtube"></i></a>
-                            <a target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
-                            @endif
-                        </div>
-                        <!-- // Social Link -->
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="about-content">
-                        <h2>Hello, I am <span>@if(isset($data['personal_info']['name'])) {{ $data['personal_info']['name'] }} @else Muhammad Mamun @endif</span></h2>
-                        <h4>@if(isset($data['personal_info']['profession_name'])) {{ $data['personal_info']['profession_name'] }} @else Data Annotation Expert @endif</h4>
-                        @if(isset($data['personal_info']['about_me']))
-                        {!! $data['personal_info']['about_me'] !!}
-                        @else
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis numquam ipsam ut deleniti perferendis aliquid ullam, voluptatibus nam sunt eum laudantium cupiditate iste, obcaecati deserunt dolores aliquam quia cum minus animi ipsa est facere culpa fugiat, maxime quam! Itaque aperiam sequi accusantium impedit recusandae nobis quod sunt deserunt provident omnis.
-                        </p>
-                        @endif
-
-                        <h5>My Skills</h5>
-
-                        <!-- Skill Area -->
-                        <div id="skills" class="skill-area">
-                            @if(isset($data['skills']))
-                            <?php
-                            $skills = $data['skills'];
-                            foreach($skills as $key => $skill):
-                            ?>
-                            <div class="single-skill">
-                                <div class="skillbar" data-percent="{{ $skill->percentage }}%">
-                                    <div class="skillbar-title"><span>{{ $skill->name }}</span></div>
-                                    <div class="skillbar-bar"></div>
-                                    <div class="skill-bar-percent">{{ $skill->percentage }}%</div>
-                                </div>
-                            </div>
-                            @endforeach
-                            @else
-                            <!-- Single skill -->
-                            <div class="single-skill">
-                                <div class="skillbar" data-percent="100%">
-                                    <div class="skillbar-title"><span>HTML5</span></div>
-                                    <div class="skillbar-bar"></div>
-                                    <div class="skill-bar-percent">100%</div>
-                                </div>
-                            </div>
-                            <!-- //Single skill -->
-
-                            <!-- Single skill -->
-                            <div class="single-skill">
-                                <div class="skillbar" data-percent="85%">
-                                    <div class="skillbar-title"><span>CSS3</span></div>
-                                    <div class="skillbar-bar"></div>
-                                    <div class="skill-bar-percent">85%</div>
-                                </div>
-                            </div>
-                            <!-- //Single skill -->
-
-                            <!-- Single skill -->
-                            <div class="single-skill">
-                                <div class="skillbar" data-percent="50%">
-                                    <div class="skillbar-title"><span>JS</span></div>
-                                    <div class="skillbar-bar"></div>
-                                    <div class="skill-bar-percent">50%</div>
-                                </div>
-                            </div>
-                            <!-- //Single skill -->
-                            @endif
-                        </div>
-                        <!-- //Skill Area -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ====== // About Area ====== -->
-
-
-    <!-- ====== Fact Counter Section ====== -->
-    <!-- ====================================================================
-                NOTE: You need to change  'data-count="10"' and 'p' Eliments
-            ===================================================================== -->
-    <section class="section-padding pb-70 bg-img fact-counter" id="counter"
-        style="background-image: url({{ asset('portfolio/images/fan-fact-bg.jpg') }})">
-        <div class="container">
-            <div class="row">
-                <!-- Single Fact Counter -->
-                <div class="col-lg-3 co col-md-6 l-md-6 text-center">
-                    <div class="single-fun-fact">
-                        <h2><span class="counter-value" data-count="@if(isset($data['personal_info']['experience'])){{ $data['personal_info']['experience'] }}@else{{ "05" }}@endif">0</span>+</h2>
-                        <p>Years Experience</p>
-                    </div>
-                </div>
-                <!-- // Single Fact Counter -->
-                <!-- Single Fact Counter -->
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="single-fun-fact">
-                        <h2><span class="counter-value" data-count="@if(isset($data['personal_info']['clients'])){{ $data['personal_info']['clients'] }}@else{{ "100" }}@endif">0</span>+</h2>
-                        <p>Happy Clients</p>
-                    </div>
-                </div>
-                <!-- // Single Fact Counter -->
-                <!-- Single Fact Counter -->
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="single-fun-fact">
-                        <h2><span class="counter-value" data-count="@if(isset($data['personal_info']['awards'])){{ $data['personal_info']['awards'] }}@else{{ "09" }}@endif">0</span>+</h2>
-                        <p>Awards Win</p>
-                    </div>
-                </div>
-                <!-- // Single Fact Counter -->
-                <!-- Single Fact Counter -->
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="single-fun-fact">
-                        <h2><span class="counter-value" data-count="@if(isset($data['personal_info']['coffee'])){{ $data['personal_info']['coffee'] }}@else{{ "500" }}@endif">0</span>+</h2>
-                        <p>Cups of Coffee</p>
-                    </div>
-                </div>
-                <!-- // Single Fact Counter -->
-            </div>
-        </div>
-    </section>
-    <!-- ====== //Fact Counter Section ====== -->
-
     <!-- ====== Service Section ====== -->
     <section id="service" class="section-padding pb-70 service-area bg-light">
         <div class="container">
@@ -236,12 +67,11 @@
                     elseif($key == 5) $icon ='fa-chart-line';
                     ?>
                     <div class="col-lg-4 col-md-6">
-                        <div class="single-service">
-                            <div class="service-icon">
-                                <i class="fa {{ $icon }}"></i>
-                            </div>
-                            <h2>{{ $item->name }}</h2>
-                            <p class="text">{{ strip_tags(substr($item->description, 0, 100)) }}...</p>
+                        <div class="single-blog">
+                            <div class="blog-thumb"
+                                style="background-image: url({{ isset($item->image) ? asset($item->image) : asset('portfolio/images/fan-fact-bg.jpg') }})"></div>
+                            <h4 class="blog-title" style="text-align: center;">{{ $item->name }}</h4>
+                            <p style="min-height: 100px; max-height: 100px;">{{ strip_tags(substr($item->description, 0, 300)) }}</p>
                         </div>
                     </div>
                     @endforeach
@@ -287,6 +117,50 @@
 
         </div>
     </section>
+    <!-- ====== Fact Counter Section ====== -->
+    <!-- ====================================================================
+            NOTE: You need to change  'data-count="10"' and 'p' Eliments
+        ===================================================================== -->
+    <section class="section-padding pb-70 bg-img fact-counter" id="counter"
+        style="background-image: url({{ asset('portfolio/images/fan-fact-bg.jpg') }})">
+        <div class="container">
+            <div class="row">
+                <!-- Single Fact Counter -->
+                <div class="col-lg-3 co col-md-6 l-md-6 text-center">
+                    <div class="single-fun-fact">
+                        <h2><span class="counter-value" data-count="@if(isset($data['personal_info']['experience'])){{ $data['personal_info']['experience'] }}@else{{ "05" }}@endif">0</span>+</h2>
+                        <p>Years Experience</p>
+                    </div>
+                </div>
+                <!-- // Single Fact Counter -->
+                <!-- Single Fact Counter -->
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="single-fun-fact">
+                        <h2><span class="counter-value" data-count="@if(isset($data['personal_info']['clients'])){{ $data['personal_info']['clients'] }}@else{{ "100" }}@endif">0</span>+</h2>
+                        <p>Happy Clients</p>
+                    </div>
+                </div>
+                <!-- // Single Fact Counter -->
+                <!-- Single Fact Counter -->
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="single-fun-fact">
+                        <h2><span class="counter-value" data-count="@if(isset($data['personal_info']['awards'])){{ $data['personal_info']['awards'] }}@else{{ "09" }}@endif">0</span>+</h2>
+                        <p>Awards Win</p>
+                    </div>
+                </div>
+                <!-- // Single Fact Counter -->
+                <!-- Single Fact Counter -->
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="single-fun-fact">
+                        <h2><span class="counter-value" data-count="@if(isset($data['personal_info']['coffee'])){{ $data['personal_info']['coffee'] }}@else{{ "500" }}@endif">0</span>+</h2>
+                        <p>Cups of Coffee</p>
+                    </div>
+                </div>
+                <!-- // Single Fact Counter -->
+            </div>
+        </div>
+    </section>
+    <!-- ====== //Fact Counter Section ====== -->
     <!-- ====== //Service Section ====== -->
 
      <!-- ====== Pricing Area ====== -->

@@ -119,6 +119,19 @@
                                 <input type="file" class="form-control" name="logo" value="@if(isset($data['logo_text'])) {{ $data['logo_text'] }} @endif">
                                 @endif
                             </div> --}}
+                            <div class="form-group logo-image">
+                                <label class="font-weight-bold">Logo</label>
+                                @if($status)
+                                <br>
+                                    @if(isset($data['logo']))
+                                    <img src="{{ asset($data['logo']) }}" alt="logo" width="40" height="40">
+                                    @else
+                                    <p>No image</p>
+                                    @endif
+                                @else
+                                <input type="file" class="form-control" name="logo" value="@if(isset($data['logo'])) {{ $data['logo'] }} @endif">
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -30,6 +30,7 @@
                             </div>
                             <div class="card-body text-success">
                               {{-- <h5 class="card-title"></h5> --}}
+                              <img src="{{ isset($item['image']) ? asset($item['image']) : '' }}" alt="" width="100%" height="300">
                               <p class="card-text">{!! $item['description'] !!}</p>
                             </div>
                             <div class="card-footer bg-transparent border-success">
@@ -52,6 +53,10 @@
             <div class="institution-group increment border border-info p-4 my-2">
                 <h5>Service Title</h5><hr>
                 <div class="form-group">
+                    <label for="exampleInputEmail1">Image</label>
+                    <input type="file" class="form-control" name="image[]" required accept="image/*">
+                </div>
+                <div class="form-group">
                     <label for="exampleInputEmail1">Title</label>
                     <input type="text" class="form-control" name="name[]" placeholder="Enter your service name" required>
                 </div>
@@ -68,6 +73,10 @@
             <div class="clone hide">
                 <div class="institution-group p-4 border border-info" style="margin-top:10px">
                     <h5>Service Title</h5><hr>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Image</label>
+                        <input type="file" class="form-control" name="image[]" required accept="image/*">
+                    </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Title</label>
                         <input type="text" class="form-control" name="name[]" placeholder="Enter your service name" required>
