@@ -887,6 +887,7 @@
                 @if(isset($data['teams']))
                 <?php
                 $teams = $data['teams'];
+                $teams = collect($teams)->sortKeysDesc();
                 foreach ($teams as $key => $item):
                 ?>
                 <div class="col-lg-3 col-md-4 col-sm-6">
