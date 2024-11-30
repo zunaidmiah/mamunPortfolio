@@ -1,41 +1,37 @@
 @extends('user.templates.BasicPortfolio.layouts.main_layout')
 @section('body')
     <!-- ====== Hero Area ====== -->
-    <div class="hero-aria" id="home">
-        <!-- Hero Area Content -->
-        <div class="container">
-            <div class="hero-content h-100">
-                <div class="d-table">
-                    <div class="d-table-cell">
-                        <h2 class="text-uppercase">@if(isset($data['personal_info']['name'])) {{ $data['personal_info']['name'] }} @else Muhammad Mamun @endif</h2>
-                        <h3 class="text-uppercase"><span class="typed"></span></h3>
-                        <input type="hidden" id="ticker_text" value="@if(isset($data['personal_info']['ticker_text'])) {{ $data['personal_info']['ticker_text'] }} @else {{ "Web Designer,Graphic Designer" }} @endif">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- // Hero Area Content -->
-        <!-- Hero Area Slider -->
-        <div class="hero-area-slids owl-carousel">
-            <div class="single-slider">
-                <!-- Single Background -->
-                @if(isset($data['website_settings']['hero_image']))
-                <div class="slider-bg" style="background-image: url({{ asset($data['website_settings']['hero_image']) }})">
+    <div class="hero-section" id="home">
+        <div class="container py-4">
+        <div class="row">
+            <div class="col-md-5">
+            <div class="networking">
+                <p class="text-muted">@if(isset($data['personal_info']['profession_name'])) {{ $data['personal_info']['profession_name'] }} @else Data Annotation Expert @endif</p>
+                <h2 class="display-5 heading">@if(isset($data['personal_info']['name'])) {{ $data['personal_info']['name'] }} @else Data Annotation BD @endif</h2>
+                @if(isset($data['personal_info']['about_me']))
+                {!! $data['personal_info']['about_me'] !!}
                 @else
-                <div class="slider-bg" style="background-image: url({{ asset('portfolio/images/hero-area/img-1.jpg') }})">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis numquam ipsam ut deleniti perferendis aliquid ullam, voluptatibus nam sunt eum laudantium cupiditate iste, obcaecati deserunt dolores aliquam quia cum minus animi ipsa est facere culpa fugiat, maxime quam! Itaque aperiam sequi accusantium impedit recusandae nobis quod sunt deserunt provident omnis.
+                </p>
                 @endif
-                </div>
-                <!-- // Single Background -->
+                {{-- <h5 class="text-muted">We're a company that focuses on establishing long-term relationships with customers.</h5> --}}
+                <a href="#portfolio" type="button" id="change-lang" class="btn btn-primary rounded-pill px-4 py-3">Explore Now</a>
             </div>
-            {{-- <div class="single-slider">
-                <!-- Single Background -->
-                <div class="slider-bg" style="background-image: url({{ asset('portfolio/images/hero-area/img-2.jpg') }})">
-                </div>
-                <!-- // Single Background -->
-            </div> --}}
+            </div>
+            <div class="col-md-7">
+            <div class="img">
+                @if(isset($data['website_settings']['hero_image']))
+                <img src="{{ asset($data['website_settings']['hero_image']) }}" alt="communication" class="w-100">
+                @else
+                <img src="https://img.freepik.com/free-vector/endpoint-concept-illustration_114360-6375.jpg?w=740&t=st=1666852595~exp=1666853195~hmac=3a207fff771155f287a29ed1dabc6ab37e6bdb5141a29c56711b772023ff9865" alt="communication" class="w-100">
+                @endif
+            </div>
+            </div>
         </div>
-        <!-- // Hero Area Slider -->
+        </div>
     </div>
+
     <!-- ====== //Hero Area ====== -->
 
 
@@ -71,7 +67,7 @@
                             <div class="blog-thumb"
                                 style="background-image: url({{ isset($item->image) ? asset($item->image) : asset('portfolio/images/fan-fact-bg.jpg') }})"></div>
                             <h4 class="blog-title" style="text-align: center;">{{ $item->name }}</h4>
-                            <p style="min-height: 100px; max-height: 100px;">{{ strip_tags(substr($item->description, 0, 300)) }}</p>
+                            <p style="min-height: 200px; max-height: 200px;">{{ strip_tags(substr($item->description, 0, 300)) }}</p>
                         </div>
                     </div>
                     @endforeach

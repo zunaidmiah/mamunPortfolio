@@ -159,6 +159,10 @@
                                     <label>Phone</label>
                                     <input type="text" class="form-control" name="phone" value="@if(isset($data['phone'])) {{ $data['phone'] }} @endif" @if($status) disabled @endif>
                                 </div>
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control" name="address" value="@if(isset($data['address'])) {{ $data['address'] }} @endif" @if($status) disabled @endif>
+                                </div>
                                 {{-- <div class="form-group">
                                     <label>Phone</label>
                                     <input type="text" class="form-control" name="phone1" value="@if(isset($data['phone1'])) {{ $data['phone1'] }} @endif" @if($status) disabled @endif>

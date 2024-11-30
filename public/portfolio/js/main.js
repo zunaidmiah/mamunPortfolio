@@ -12,9 +12,15 @@
         if (scroll >= 1) {
             $(".navbar").addClass("bg-primari");
             $(".logo-text").css('color', '#FFC900');
+            $(".main-text-logo").css('color', '#fff');
+            $(".navbar-expand-lg .navbar-nav .nav-link").css('color', '#fff');
+            $(".navbar-expand-lg .navbar-nav .nav-link.active").css('color', '#ffc900');
         } else {
             $(".navbar").removeClass("bg-primari");
             $(".logo-text").css('color', '#000');
+            $(".main-text-logo").css('color', '#ffc900');
+            $(".navbar-expand-lg .navbar-nav .nav-link").css('color', '#000000');
+            $(".navbar-expand-lg .navbar-nav .nav-link.active").css('color', '#ffc900');
         }
     });
 

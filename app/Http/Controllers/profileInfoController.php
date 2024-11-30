@@ -481,15 +481,15 @@ class profileInfoController extends Controller
                     $values = [];
                     $values[] = $datas['name'][$i];
                     $values[] = $datas['description'][$i];
-                    $file = $datas['image'][$i];
-                    $filename = $file->getClientOriginalName();
-                    $path = public_path('uploads/files');
-                    if (!file_exists($path)) {
-                        mkdir($path, 0777, true);
-                    }
-                    $file->move($path, $filename);
+                    $image = $datas['image'][$i];
+                    $originalName = $image->getClientOriginalName();
+                    $originalName = str_replace(" ", "", $originalName);
+                    $justName = explode('.', $originalName)[0];
+                    $destinationPath = 'uploads/files/';
+                    $createNameImage = $justName ."-" . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->move($destinationPath, $createNameImage);
                 
-                    $values[] = 'uploads/files/'.$filename;
+                    $values[] = 'uploads/files/'.$createNameImage;
                     $service[] = array_combine($field, $values);
 
                 }

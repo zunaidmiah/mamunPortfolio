@@ -46,8 +46,15 @@
 
                                                 <div class="form-group">
                                                     <div class="custom-control  d-flex align-items-center">
-                                                        <label class="custom-control-label mr-2 d-flex" for="facebook_enabled"><i class="mdi mdi-facebook mdi-20px lh-1_0 mr-2"></i> facebook.com/</label>
-                                                        <input type="text" option-group="" class=" form-control" name="facebook_url" value="@if(isset($data['facebook_url'])){{  $data['facebook_url']  }} @endif">
+                                                        <label class="custom-control-label mr-2 d-flex" for="fiver_enabled"><i class="mdi mdi-facebook mdi-20px lh-1_0 mr-2"></i> fiverr.com/</label>
+                                                        <input type="text" option-group="" class=" form-control" name="fiverr_url" value="@if(isset($data['fiverr_url'])){{  $data['fiverr_url']  }} @endif">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="custom-control  d-flex align-items-center">
+                                                        <label class="custom-control-label mr-2 d-flex" for="upwork_enabled"><i class="mdi mdi-facebook mdi-20px lh-1_0 mr-2"></i> upwork.com/</label>
+                                                        <input type="text" option-group="" class=" form-control" name="upwork_url" value="@if(isset($data['upwork_url'])){{  $data['upwork_url']  }} @endif">
                                                     </div>
                                                 </div>
 
@@ -79,6 +86,13 @@
                                                         <div class="custom-control  d-flex align-items-center">
                                                             <label class="custom-control-label mr-2 d-flex" for="instagram_enabled"><i class="mdi mdi-instagram mdi-20px lh-1_0 mr-2"></i> instagram.com/</label>
                                                             <input type="text" class=" form-control" name="instagram_url" value="@if(isset($data['instagram_url'])){{  $data['instagram_url']  }} @endif"/>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <div class="custom-control  d-flex align-items-center">
+                                                            <label class="custom-control-label mr-2 d-flex" for="facebook_enabled"><i class="mdi mdi-facebook mdi-20px lh-1_0 mr-2"></i> facebook.com/</label>
+                                                            <input type="text" option-group="" class=" form-control" name="facebook_url" value="@if(isset($data['facebook_url'])){{  $data['facebook_url']  }} @endif">
                                                         </div>
                                                     </div>
 
