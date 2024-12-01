@@ -310,7 +310,7 @@
                     }
                     ?>
                     <div class="col-md-6">
-                        <div class="single-why-me why-me-{{ $start }}">
+                        <div class="single-why-me why-me-{{ $start }}" style="max-height: 150px; min-height: 150px;">
                             <div class="why-me-icon">
                                 <div class="d-table">
                                     <div class="d-table-cell">
@@ -993,36 +993,6 @@
     </section>
     <!-- ====== // Team Section ====== -->
 
-
-    <!-- ====== Call to Action Area ====== -->
-    <section class="section-padding call-to-action-aria bg-secondary">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9">
-                    <h2>@if(isset($data['personal_info']['name'])) {{ $data['personal_info']['name'] }} @else Muhammad Mamun @endif</h2>
-                    @if(isset($data['personal_info']['about_me']))
-                    {!! $data['personal_info']['about_me'] !!}
-                    @else
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis numquam ipsam ut deleniti perferendis aliquid ullam, voluptatibus nam sunt eum laudantium cupiditate iste, obcaecati deserunt dolores aliquam quia cum minus animi ipsa est facere culpa fugiat, maxime quam! Itaque aperiam sequi accusantium impedit recusandae nobis quod sunt deserunt provident omnis.
-                    </p>
-                    @endif
-                </div>
-                <div class="col-lg-3">
-                    <div class="cta-button">
-                        <div class="d-table">
-                            <div class="d-table-cell">
-                                <a href="#contact" class="button">Contact me</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ====== // Call to Action Area ====== -->
-
-
     <!-- ====== Contact Area ====== -->
     <section id="contact" class="section-padding contact-section bg-light">
         <div class="container">
@@ -1030,7 +1000,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 ">
                     <div class="section-title text-center">
-                        <h2>Contact Me</h2>
+                        <h2>Contact Us</h2>
                         {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> --}}
                     </div>
                 </div>
