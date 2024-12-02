@@ -17,13 +17,30 @@
             $(".navbar-expand-lg .navbar-nav .nav-link.active").css('color', '#ffc900');
         } else {
             $(".navbar").removeClass("bg-primari");
-            $(".logo-text").css('color', '#000');
+            if(checkDevice() == 'phone'){
+                $(".logo-text").css('color', '#fff');
+            }else{
+                $(".logo-text").css('color', '#000');
+            }
             $(".main-text-logo").css('color', '#ffc900');
             $(".navbar-expand-lg .navbar-nav .nav-link").css('color', '#000000');
             $(".navbar-expand-lg .navbar-nav .nav-link.active").css('color', '#ffc900');
         }
     });
 
+    function checkDevice() {
+        const deviceType = window.innerWidth <= 768 ? "phone" : "desktop";
+        if(deviceType == 'phone'){
+            $(".logo-text").css('color', '#fff');
+        }else if(deviceType == 'phone'){
+            $(".logo-text").css('color', '#000');
+        }
+        return deviceType;
+    }
+    
+    checkDevice();
+    
+    window.addEventListener('resize', checkDevice);
 
     //Smoth Scroll
     $(function () {

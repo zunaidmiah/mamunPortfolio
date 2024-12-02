@@ -238,7 +238,10 @@
 /* Wide Mobile Layout: 480px. */
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-
+    
+    .single-why-me{
+        margin-top: 20%;
+    }
 
     /*::::::::::::::::::::::::::::::::::::
        Main Menu
@@ -336,5 +339,12 @@
     ::::::::::::::::::::::::::::::::::::*/
     .contact-form {
         padding: 30px;
+    }
+}
+
+
+@media (max-width: 480px){
+    .single-why-me{
+        margin-top: 20%;
     }
 }
