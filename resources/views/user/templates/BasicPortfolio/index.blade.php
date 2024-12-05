@@ -437,8 +437,13 @@
             </div>
             <div class="row portfolio">
                 @if(count($portfolioCategories) > 0 and count($data['portfolios']) > 0)
+                @php
+                    $i=0;
+                @endphp
                 @foreach ($data['portfolios'] as $item)
                 @php
+                    if($i >= 6) break;
+                    $i++;
                     $media = DB::table('media')->where('type', 'portfolios')->where('rel_id', $item->id)->value('link');
                     $categoryName = '';
                     if(isset($portfolioCategories[$item->category]) and isset($portfolioCategories[$item->category]->name)){
