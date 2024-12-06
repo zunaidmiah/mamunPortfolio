@@ -400,7 +400,7 @@ class FrontEndController extends Controller
         ];
         try{
             Mail::to(DB::table('users')->value('email'))->send(new ContactFormMail($details));
-            return redirect()->back()->with('success', 'Thank You! Your message has been sent.');
+            return redirect()->to(url('/'.'#contact'))->with('success', 'Thank You! Your message has been sent.');
         } catch (\Exception $e){
             return redirect()->back()->with('error', 'Oops! Something went wrong and we couldn`t send your message.');
         }
